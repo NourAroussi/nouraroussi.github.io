@@ -1,0 +1,102 @@
+name: Update Credly Badges
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Every Monday at 8am UTC
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch badges from Credly
+        run: |
+          curl -s 'https://www.credly.com/users/nouraroussi/badges.json' | python3 << 'EOF'
+          import json, sys, re
+          from datetime import date
+
+          data = json.load(sys.stdin)
+          today = date.today().isoformat()
+
+          # Filter out expired and stackable badges
+          badges = [b for b in data['data']
+                    if 'Stackable' not in b['badge_template']['name']
+                    and (not b.get('expires_at_date') or b['expires_at_date'] >= today)]
+
+          # Priority order
+          priority = {
+              'CISSP': 1, 'GSEC': 2, 'GFACT': 3, 'SecurityX': 4,
+              'Security – Specialty': 5, 'Solutions Architect – Associate': 6,
+              'CloudOps': 7, 'Developer – Associate': 8,
+              'Cloud Practitioner': 9, 'AI Practitioner': 10,
+              'CCNA': 11, 'CySA+': 12, 'PenTest+': 13, 'Security+': 14,
+              'SecAI+': 15, 'Cloud+': 16, 'Linux+': 17, 'Server+': 18,
+              'Network+': 19, 'A+ ce': 20,
+          }
+
+          def get_priority(name):
+              for key, val in priority.items():
+                  if key in name:
+                      return val
+              if 'Stackable' in name or 'Specialist' in name or 'Professional' in name or 'Expert' in name:
+                  return 50
+              return 80
+
+          # Build sorted cert entries
+          entries = []
+          for b in badges:
+              name = b['badge_template']['name']
+              img = b['image_url']
+              url = f"https://www.credly.com/badges/{b['id']}/public_url"
+              short = name.replace(' Stackable Certification', '').replace(' ce Certification', '').replace(' - Training Badge', '').replace('Certified ', '').replace('CompTIA ', '').replace('AWS ', '')
+              entries.append((get_priority(name), short, img, url))
+
+          entries.sort(key=lambda x: x[0])
+
+          # Generate JS array
+          js_lines = []
+          for _, name, img, url in entries:
+              js_lines.append(f'            {{ name: "{name}", img: "{img}", url: "{url}" }},')
+          js_certs = '\n'.join(js_lines)
+
+          # Generate floating badges array
+          bg_lines = [f'            "{img}"' for _, _, img, _ in entries]
+          js_bg = ',\n'.join(bg_lines)
+
+          # Read index.html
+          with open('index.html', 'r') as f:
+              html = f.read()
+
+          # Replace certs array
+          html = re.sub(
+              r'(const certs = \[)\n.*?(\n        \];)',
+              f'\\1\n{js_certs}\n        ];',
+              html, flags=re.DOTALL
+          )
+
+          # Replace floating badges array
+          html = re.sub(
+              r'(const badges = \[)\n.*?(\n        \];)',
+              f'\\1\n{js_bg}\n        ];',
+              html, flags=re.DOTALL
+          )
+
+          # Update count
+          html = re.sub(r'const count = \d+;', f'const count = {len(entries)};', html)
+
+          with open('index.html', 'w') as f:
+              f.write(html)
+
+          print(f"Updated {len(entries)} badges")
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.html
+          git diff --cached --quiet || (git commit -m "Update Credly badges [auto]" && git push)

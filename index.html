@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nour Aroussi - Cloud Security & Network Engineer</title>
+    <meta name="description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications. Building hands-on security labs and defending enterprise networks.">
+    <meta name="author" content="Nour Aroussi">
+    <meta property="og:title" content="Nour Aroussi - Cloud Security & Network Engineer">
+    <meta property="og:description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications. Hands-on security labs, network defense, and cloud infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nouraroussi.github.io">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nour Aroussi - Cloud Security & Network Engineer">
+    <meta name="twitter:description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark { background: #0f172a; color: #e2e8f0; }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed; top: 16px; right: 16px; z-index: 100;
+            background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px; padding: 8px 14px; cursor: pointer; font-size: 0.85rem; color: #4f46e5;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover { background: rgba(99, 102, 241, 0.2); }
+        body.dark .theme-toggle { color: #a5b4fc; border-color: rgba(165, 180, 252, 0.3); }
+
+        /* Floating badges background */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .floating-badge {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            opacity: 0.08;
+            filter: grayscale(20%);
+            animation: float linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(110vh); }
+            100% { transform: translateY(-120px); }
+        }
+
+        /* Content layer */
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 40px 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .placeholder {
+            text-align: center;
+            padding: 40px;
+        }
+        .placeholder h1 {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 8px;
+        }
+        body.dark .placeholder h1 { color: #a5b4fc; }
+        .placeholder p {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        /* Projects section */
+        .projects-section {
+            max-width: 900px;
+            margin: 10px auto;
+            padding: 0 20px;
+        }
+        .projects-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #4f46e5;
+            margin-bottom: 24px;
+        }
+        body.dark .projects-section h2 { color: #a5b4fc; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .project-card {
+            background: rgba(241, 245, 249, 0.9);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+        }
+        body.dark .project-card {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        .project-card h3 {
+            color: #4f46e5;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        body.dark .project-card h3 { color: #a5b4fc; }
+        .project-card p {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+        .project-card .meta {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: flex;
+            gap: 12px;
+        }
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .timeline-row { flex-direction: column !important; }
+            .timeline-row > div { margin: 0 0 12px 0 !important; flex: none !important; }
+            .timeline-dot { position: relative !important; left: auto !important; transform: none !important; margin: 8px 0; }
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(99,102,241,0.1);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="document.body.classList.toggle('dark'); this.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';">🌙 Dark</button>
+    <button class="theme-toggle" style="right:auto; left:16px;" onclick="const bg=document.getElementById('floatingBg'); bg.style.display=bg.style.display==='none'?'block':'none'; this.textContent=bg.style.display==='none'?'🎖️ Badges':'🚫 Badges';">🚫 Badges</button>
+    <div class="floating-bg" id="floatingBg"></div>
+
+    <div class="content">
+        <div class="placeholder">
+            <h1>Nour Aroussi</h1>
+            <p style="font-size:1.1rem; color:#4f46e5; margin-bottom:16px;">Cloud Security & Network Engineer</p>
+            <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; font-size:0.9rem;">
+                <span style="display:inline-flex; align-items:center; gap:5px;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+                    Boston, MA | Open to Remote
+                </span>
+                <span style="display:inline-flex; align-items:center; gap:5px;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+                    +1 (646) 764-4871
+                </span>
+                <a id="eml" style="display:inline-flex; align-items:center; gap:5px; color:inherit; text-decoration:none; cursor:pointer;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Email
+                </a>
+                <a href="https://www.linkedin.com/in/nouraroussi" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:5px; color:inherit; text-decoration:none;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/nouraroussi" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:5px; color:inherit; text-decoration:none;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                    GitHub
+                </a>
+            </div>
+            <p style="max-width:650px; margin:20px auto 0; line-height:1.7; font-size:0.9rem; color:#475569;">
+                Cloud Security & Network Engineer with a passion for building hands-on security lab environments. Currently pursuing SANS GSEC and GCIH certifications while developing practical skills in network defense, Active Directory security, and firewall architecture. Holds multiple CompTIA, AWS, and Cisco certifications with a focus on bridging cloud infrastructure and network security.
+            </p>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <section class="projects-section">
+        <h2>Skills</h2>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">AWS (IAM, VPC, CloudTrail, GuardDuty)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Terraform</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">AWS CDK</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Azure</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">TCP/IP</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">OSPF / BGP</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">DNS / DHCP</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Firewalls (pfSense, Cisco ASA, Juniper, SonicWall)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Cisco Switches</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Aruba Switches & Wireless</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Juniper Network Devices</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">IDS/IPS (Suricata, Snort)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">VPN (IPsec, OpenVPN)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">ACLs & VLAN Segmentation</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">802.1X / NAC</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Nmap</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Metasploit</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Wireshark</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">tcpdump</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Zeek</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Burp Suite</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Linux (Ubuntu, Kali)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Windows Server</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Active Directory</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">ESXi / EVE-NG</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">PowerShell</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Bash</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Network Forensics</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Packet Capture & Analysis</span>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="projects-section">
+        <h2>Certifications</h2>
+        <div id="certsGrid" style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
+        </div>
+        <div style="text-align:center; margin-top:16px;">
+            <button id="certsToggle" onclick="toggleCerts()" style="background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); border-radius:20px; padding:8px 20px; cursor:pointer; font-size:0.85rem; color:#4f46e5; transition:all 0.3s;">Show More</button>
+        </div>
+    </section>
+
+    <!-- Experience & Education Timeline -->
+    <section class="projects-section">
+        <h2>Experience & Education</h2>
+        <div style="max-width:900px; margin:0 auto; position:relative;">
+            <!-- Center timeline line -->
+            <div style="position:absolute; left:50%; top:0; bottom:0; width:2px; background:rgba(99,102,241,0.3); transform:translateX(-50%);"></div>
+
+            <!-- Row 1: May 2025 – Present -->
+            <div class="timeline-row" style="display:flex; align-items:flex-start; margin-bottom:24px; position:relative;">
+                <div class="project-card" style="flex:1; margin-right:24px; border-radius:12px; position:relative;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Present</div>
+                    <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Applied Cybersecurity Certificate</h3>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">SANS Institute of Technology</div>
+                    <div style="font-size:0.75rem; color:#475569;">SEC401 (GSEC) · SEC504 (GCIH)</div>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jan 2026</div>
+                </div>
+                <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">Present</div>
+                <div class="project-card" style="flex:1; margin-left:24px; border-radius:12px; position:relative;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Present</div>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
+                        <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Network & IT Engineer II</h3>
+                    </div>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ring, Blink, Key & Sidewalk</div>
+                    <ul id="job1" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
+                        <li>Perform day-to-day operations, monitoring, and troubleshooting of on-premises and cloud-connected network infrastructure supporting a hybrid workforce across the Boston regional office</li>
+                        <li>Respond to network incidents, identify root causes, and implement or escalate resolutions in a timely manner, balancing ticket queue management with project work and proactive network support</li>
+                        <li>Configure, maintain, and troubleshoot enterprise LAN, WAN, and wireless infrastructure leveraging Cisco Meraki, Aruba, and Juniper platforms to uphold uptime and availability standards</li>
+                        <li>Manage and troubleshoot enterprise network lab environments, including VMware ESXi nodes and vSphere clusters, supporting hybrid connectivity between on-premises and cloud environments</li>
+                        <li>Maintain accurate operational documentation including network diagrams, runbooks, and change records for regional infrastructure</li>
+                        <li>Support desktop-level troubleshooting across macOS, Windows, and Linux environments, applying strong analytical skills to problem resolution</li>
+                    </ul>
+                    <span onclick="toggleJob('job1',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2025</div>
+                </div>
+            </div>
+
+            <!-- Row 2: 2020 – 2025 -->
+            <div class="timeline-row" style="display:flex; align-items:flex-start; margin-bottom:24px; position:relative;">
+                <div class="project-card" style="flex:1; margin-right:24px; border-radius:12px; position:relative;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Aug 2025</div>
+                    <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">MS Cybersecurity & Info Assurance</h3>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">Western Governors University</div>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2024</div>
+                </div>
+                <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">2020 – 2025</div>
+                <div class="project-card" style="flex:1; margin-left:24px; border-radius:12px; position:relative;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">May 2025</div>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
+                        <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">IT Support Engineer II</h3>
+                    </div>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ops Tech Solutions Delivery</div>
+                    <ul id="job2" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
+                        <li>Led infrastructure support for a regional team serving Delivery Stations and Fulfillment Centers, ensuring reliable LAN, WAN, and wireless connectivity across multi-site environments</li>
+                        <li>Managed escalated network and system support tickets while maintaining 99.9% SLA compliance, working within ITIL-aligned change management and incident response processes</li>
+                        <li>Coordinated 24/7 system and network support through rotating on-call coverage, responding to critical incidents and driving timely resolution</li>
+                        <li>Directed internal and external service providers to resolve technical issues within SLA requirements, including network hardware lifecycle management, patching, and firmware upgrades</li>
+                        <li>Evaluated and implemented hardware and software solutions — including network equipment and security appliances — to improve operational efficiency across AMZL and Robotic Delivery Stations</li>
+                        <li>Built and maintained IT and network infrastructure for new site launches</li>
+                        <li>Led hiring initiatives, trained new team members on network operations procedures, and maintained service and infrastructure documentation</li>
+                    </ul>
+                    <span onclick="toggleJob('job2',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Aug 2020</div>
+                </div>
+            </div>
+
+            <!-- Row 3: 2019 – 2020 -->
+            <div class="timeline-row" style="display:flex; align-items:flex-start; position:relative;">
+                <div style="flex:1; margin-right:24px;"></div>
+                <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">2019 – 2020</div>
+                <div class="project-card" style="flex:1; margin-left:24px; border-radius:12px; position:relative;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Aug 2020</div>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
+                        <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">System Administrator</h3>
+                    </div>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">4As · New York, NY</div>
+                    <ul id="job3" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
+                        <li>Designed virtualized environment (ESXi/vCenter), improving resource utilization by 40%; built HA cluster (HP Array/Synology NAS) ensuring 99.9% uptime</li>
+                        <li>Reconfigured VLANs on HP/Cisco switches using core protocols (STP, QoS), reducing latency by 30%; deployed SonicWall firewalls for VPN and security policy administration</li>
+                        <li>Migrated on-premises systems to Azure/G-Suite (VPCs/VNets, VPN), cutting infrastructure costs by 35%; led Windows Server migration for 200 users via change management processes</li>
+                        <li>Implemented Barracuda backup with 4-hour RTO; maintained network diagrams and documentation across all projects</li>
+                    </ul>
+                    <span onclick="toggleJob('job3',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jun 2019</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - auto-fetches from GitHub -->
+    <section class="projects-section">
+        <h2>GitHub Projects</h2>
+        <div class="projects-grid" id="projectsGrid">
+            <p style="text-align:center; color:#94a3b8;">Loading projects...</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Nour Aroussi · Built with HTML, CSS & JavaScript</p>
+    </footer>
+
+    <script>
+        // Job details toggle
+        function toggleJob(id, btn) {
+            const el = document.getElementById(id);
+            if (el.style.maxHeight === '0px' || el.style.maxHeight === '') {
+                el.style.maxHeight = '300px';
+                btn.textContent = 'Show Less';
+            } else {
+                el.style.maxHeight = '0px';
+                btn.textContent = 'Show More';
+            }
+        }
+
+        // Certifications - ordered by level (data from Credly API)
+        const certs = [
+            { name: "CISSP", img: "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png", url: "https://www.credly.com/badges/2ab67e07-79bb-4320-ba1d-ee1a98d4b901/public_url" },
+            { name: "GIAC GSEC", img: "https://images.credly.com/images/8e6bde54-8a33-4ec0-9d70-90fcde581bcf/image.png", url: "https://www.credly.com/badges/64bdc6e8-0694-4852-8732-6fc89edf029a/public_url" },
+            { name: "GIAC GFACT", img: "https://images.credly.com/images/2d9b3293-9295-4ac3-a326-1bb7013225a4/image.png", url: "https://www.credly.com/badges/773fa553-b58e-408a-98b4-d7cbb6a6048a/public_url" },
+            { name: "CompTIA SecurityX", img: "https://images.credly.com/images/5343b652-c9a0-418e-bfaf-7ed5a2ddd0c4/blob", url: "https://www.credly.com/badges/f48ce6d5-9eba-4573-9ba9-f19247e113f8/public_url" },
+            { name: "AWS Security Specialty", img: "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png", url: "https://www.credly.com/badges/3edcb458-e2a2-455f-8bbc-4939c5875d17/public_url" },
+            { name: "AWS Solutions Architect", img: "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png", url: "https://www.credly.com/badges/007efa5c-f9cb-41e0-993b-c60ba32f5fd4/public_url" },
+            { name: "AWS CloudOps Engineer", img: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob", url: "https://www.credly.com/badges/3c8cc46b-2e7d-4d5d-a7f1-113761b042f2/public_url" },
+            { name: "AWS Developer", img: "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png", url: "https://www.credly.com/badges/502b8e88-7171-4e1e-b6ce-60e3e1ed0295/public_url" },
+            { name: "AWS Cloud Practitioner", img: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png", url: "https://www.credly.com/badges/2b6d2680-5c80-4bc3-b09a-6deebac5937b/public_url" },
+            { name: "AWS AI Practitioner", img: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png", url: "https://www.credly.com/badges/9e3369a9-48a0-457c-9320-8a907f70aeb1/public_url" },
+            { name: "CCNA", img: "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png", url: "https://www.credly.com/badges/6bf64932-3da4-453e-b1bc-be5297794f4a/public_url" },
+            { name: "CompTIA CySA+", img: "https://images.credly.com/images/dcd99b5b-da24-40a6-9364-62126d590c37/blob", url: "https://www.credly.com/badges/b72791fd-eedc-44d3-9cf6-1d706c1a1785/public_url" },
+            { name: "CompTIA PenTest+", img: "https://images.credly.com/images/c7ac176b-15a3-4726-827a-e8cee8fe44dc/blob", url: "https://www.credly.com/badges/b7c79cc3-beed-4041-80b9-31cd54c95114/public_url" },
+            { name: "CompTIA Security+", img: "https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob", url: "https://www.credly.com/badges/943a6ca8-7773-4d2e-a6d4-6d37157bf78e/public_url" },
+            { name: "CompTIA SecAI+", img: "https://images.credly.com/images/7c798dfc-1610-42c6-8729-2b735f88fab0/blob", url: "https://www.credly.com/badges/34e1fe77-fc8a-4462-a0c2-03ba4fa8822c/public_url" },
+            { name: "CompTIA Cloud+", img: "https://images.credly.com/images/b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe/blob", url: "https://www.credly.com/badges/19c4b78c-7950-4d43-9d0f-d84c5113aa14/public_url" },
+            { name: "CompTIA Linux+", img: "https://images.credly.com/images/c8ba8fa6-ab8b-4df7-879f-4ae7b98b2765/blob", url: "https://www.credly.com/badges/3659c7e8-d337-4be8-a06e-4899638ebf43/public_url" },
+            { name: "CompTIA Server+", img: "https://images.credly.com/images/07378420-4407-4f09-a4d7-9301d87dec34/blob", url: "https://www.credly.com/badges/55b7f064-d5a7-45ef-9904-59c3cfd9dada/public_url" },
+            { name: "CompTIA Network+", img: "https://images.credly.com/images/c70ba73e-3c8a-46fa-9d60-4a9af94ad662/blob", url: "https://www.credly.com/badges/261de691-5759-4854-80e7-6e630617c1af/public_url" },
+            { name: "CompTIA A+", img: "https://images.credly.com/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob", url: "https://www.credly.com/badges/e9914f41-0890-4474-8598-0064f5c0a29a/public_url" },
+            { name: "ISC2 CC", img: "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png", url: "https://www.credly.com/badges/a2364193-22e1-483c-8d34-6a942282a8c0/public_url" },
+
+            { name: "PCAP Python", img: "https://images.credly.com/images/4e248e82-9e87-4a63-9263-250fafe5fb1f/image.png", url: "https://www.credly.com/badges/722bae21-f48e-4b62-88aa-23fc8a093208/public_url" },
+            { name: "Cisco Network Devices", img: "https://images.credly.com/images/1442feda-7455-4bcb-a114-8803c9dee675/CV_PNG_L200.png", url: "https://www.credly.com/badges/1d7becc4-644b-488a-b467-59619457d270/public_url" },
+            { name: "Fortinet FCF", img: "https://images.credly.com/images/22a0ece5-ff05-4594-8320-25e55e9ae203/image.png", url: "https://www.credly.com/badges/7e4c9d63-a4de-4ec6-81c7-45adea3ddde8/public_url" },
+
+            { name: "Well-Architected", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url" },
+            { name: "AWS Cloud Quest: Solutions Architect", img: "https://images.credly.com/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob", url: "https://www.credly.com/badges/dc13a382-0332-4aec-96e3-cacbf895aa14/public_url" },
+            { name: "AWS Cloud Quest: Security", img: "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob", url: "https://www.credly.com/badges/9f825acd-ff79-48f5-a476-c4b0feb6d997/public_url" },
+            { name: "AWS Cloud Quest: Networking", img: "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob", url: "https://www.credly.com/badges/e96555dd-658c-4b58-acc5-6d4f2685d42a/public_url" },
+            { name: "AWS Cloud Quest: Gen AI", img: "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob", url: "https://www.credly.com/badges/4b534260-7275-4e75-b497-4ba4ced927cd/public_url" },
+            { name: "AWS Healthcare Quest", img: "https://images.credly.com/images/aed5aea8-8054-431f-aa1c-6b33b256d2ca/blob", url: "https://www.credly.com/badges/d1a9a6e0-db31-4bde-8b87-0fd6f4f0b76d/public_url" },
+            { name: "AWS Cloud Quest: Cloud Practitioner", img: "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob", url: "https://www.credly.com/badges/9c296a50-d5e1-4cf1-888b-154a310e0086/public_url" },
+            { name: "Academic Qualifications", img: "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png", url: "https://www.credly.com/badges/37386789-593c-479d-9640-19b8314daed7/public_url" },
+            { name: "Fortinet Cybersecurity 3.0", img: "https://images.credly.com/images/a27867b1-d64f-4890-b577-89f162015407/blob", url: "https://www.credly.com/badges/b7021128-ac05-471b-94fc-419a32b56558/public_url" },
+            { name: "Fortinet Threat Landscape 3.0", img: "https://images.credly.com/images/a06a4e98-21bf-49ab-ad70-c61641f26fc8/blob", url: "https://www.credly.com/badges/c92bd6fa-1a11-4dba-ad4d-66ef2482c669/public_url" },
+        ];
+
+        let certsExpanded = false;
+        function renderCerts() {
+            const grid = document.getElementById('certsGrid');
+            const visible = certsExpanded ? certs : certs.slice(0, 5);
+            grid.innerHTML = visible.map(c => `
+                <a href="${c.url}" target="_blank" rel="noopener noreferrer" style="text-align:center; text-decoration:none; color:inherit;">
+                    <img src="${c.img}" alt="${c.name}" style="width:80px; height:80px; border-radius:8px; transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="font-size:0.7rem; margin-top:4px; max-width:90px; color:#64748b;">${c.name}</div>
+                </a>
+            `).join('');
+            const btn = document.getElementById('certsToggle');
+            btn.textContent = certsExpanded ? 'Show Less' : `Show More (${certs.length} total)`;
+        }
+        function toggleCerts() {
+            certsExpanded = !certsExpanded;
+            renderCerts();
+        }
+        renderCerts();
+
+        // Fetch all public repos from GitHub profile
+        fetch('https://api.github.com/users/nouraroussi/repos?type=public&sort=updated&per_page=100')
+            .then(r => r.json())
+            .then(repos => {
+                const grid = document.getElementById('projectsGrid');
+                if (!repos.length) {
+                    grid.innerHTML = '<p style="text-align:center; color:#94a3b8;">No projects yet.</p>';
+                    return;
+                }
+                grid.innerHTML = '';
+                repos.filter(r => !r.fork).forEach(repo => {
+                    const card = document.createElement('a');
+                    card.href = repo.html_url;
+                    card.target = '_blank';
+                    card.rel = 'noopener noreferrer';
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <h3>${repo.name.replace(/-/g, ' ')}</h3>
+                        <p>${repo.description || 'View project →'}</p>
+                        <div class="meta">
+                            ${repo.language ? `<span>🔧 ${repo.language}</span>` : ''}
+                            <span>⭐ ${repo.stargazers_count}</span>
+                            <span>🔄 ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            })
+            .catch(() => {
+                document.getElementById('projectsGrid').innerHTML = '<p style="text-align:center; color:#94a3b8;">Unable to load projects.</p>';
+            });
+        // Email obfuscation
+        (function(){var u='arnourssi',d='gmail.com',a=document.getElementById('eml');a.href='mailto:'+u+'@'+d;})();
+
+        const badges = [
+            "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png",
+            "https://images.credly.com/images/8e6bde54-8a33-4ec0-9d70-90fcde581bcf/image.png",
+            "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png",
+            "https://images.credly.com/images/5343b652-c9a0-418e-bfaf-7ed5a2ddd0c4/blob",
+            "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png",
+            "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+            "https://images.credly.com/images/c7ac176b-15a3-4726-827a-e8cee8fe44dc/blob",
+            "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png",
+            "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob",
+            "https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob",
+            "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png",
+            "https://images.credly.com/images/2d9b3293-9295-4ac3-a326-1bb7013225a4/image.png",
+            "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png",
+            "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+            "https://images.credly.com/images/dcd99b5b-da24-40a6-9364-62126d590c37/blob",
+            "https://images.credly.com/images/7c798dfc-1610-42c6-8729-2b735f88fab0/blob",
+            "https://images.credly.com/images/c8ba8fa6-ab8b-4df7-879f-4ae7b98b2765/blob",
+            "https://images.credly.com/images/b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe/blob",
+            "https://images.credly.com/images/c70ba73e-3c8a-46fa-9d60-4a9af94ad662/blob",
+            "https://images.credly.com/images/07378420-4407-4f09-a4d7-9301d87dec34/blob",
+            "https://images.credly.com/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob",
+            "https://images.credly.com/images/22a0ece5-ff05-4594-8320-25e55e9ae203/image.png",
+            "https://images.credly.com/images/4e248e82-9e87-4a63-9263-250fafe5fb1f/image.png",
+            "https://images.credly.com/images/1442feda-7455-4bcb-a114-8803c9dee675/CV_PNG_L200.png",
+            "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob",
+            "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob",
+            "https://images.credly.com/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob",
+            "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob",
+            "https://images.credly.com/images/aed5aea8-8054-431f-aa1c-6b33b256d2ca/blob",
+            "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png",
+            "https://images.credly.com/images/4e8cb067-ff0a-4b3e-bf5d-7290ba25d0d6/CompTIA_CSIE.png",
+            "https://images.credly.com/images/93d16d4a-223f-41bd-aaad-6a491b7b1fa8/CompTIA_CSAE.png",
+            "https://images.credly.com/images/ba1b8072-8ebe-432c-88e5-05bc809c624a/CompTIA_CSAP.png",
+            "https://images.credly.com/images/6f68e302-2193-4cbc-b2d9-50541a130ffa/CompTIA_CNSP.png",
+            "https://images.credly.com/images/3eaf80a9-a69a-480a-a98b-e9a91796d6cb/CompTIA_CNVP.png",
+            "https://images.credly.com/images/9f54bf46-dc18-408c-a74e-2637facd1856/CompTIA_CSCP.png",
+            "https://images.credly.com/images/18218ce6-e7d4-4479-9500-b7499645b763/CompTIA_CCAP.png",
+            "https://images.credly.com/images/d68e17f2-b591-4f2e-ae64-414ba82665f4/CompTIA_CLNP.png",
+            "https://images.credly.com/images/802502c7-7b2c-4a96-82b0-e6aa5796e878/CompTIA_CSSS.png",
+            "https://images.credly.com/images/f308a5b0-18e3-4e93-ae15-9f27dd0a94cc/CompTIA_CNIP.png",
+            "https://images.credly.com/images/8090280a-311f-425f-a1cd-a32770b5a444/CompTIA_CSIS.png",
+            "https://images.credly.com/images/7f7657b9-4d1b-4b8d-b5ee-5fdf6d7ccd71/04294_CompTIA_Cert_Badges_Specialist_-_CIOS.png",
+            "https://images.credly.com/images/701db568-0aec-461e-8857-d7ac313e0062/image.png",
+            "https://images.credly.com/images/a27867b1-d64f-4890-b577-89f162015407/blob",
+            "https://images.credly.com/images/a06a4e98-21bf-49ab-ad70-c61641f26fc8/blob",
+            "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png",
+            "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob"
+        ];
+
+        const bg = document.getElementById('floatingBg');
+        const count = 47;
+        const columns = 14;
+        const colWidth = 100 / columns;
+
+        for (let i = 0; i < count; i++) {
+            const img = document.createElement('img');
+            img.src = badges[i % badges.length];
+            img.className = 'floating-badge';
+            const col = i % columns;
+            const row = Math.floor(i / columns);
+            img.style.left = (col * colWidth + colWidth * 0.15) + '%';
+            img.style.animationDuration = (14 + (i % 5) * 3) + 's';
+            img.style.animationDelay = (-(row * 8) - (col * 1.5)) + 's';
+            bg.appendChild(img);
+        }
+    </script>
+</body>
+</html>
