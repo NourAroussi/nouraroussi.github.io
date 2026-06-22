@@ -15,11 +15,13 @@ jobs:
 
       - name: Fetch badges from Credly
         run: |
-          curl -s 'https://www.credly.com/users/nouraroussi/badges.json' | python3 << 'EOF'
+          curl -sf -H 'Accept: application/json' -H 'User-Agent: Mozilla/5.0' 'https://www.credly.com/users/nouraroussi/badges.json' -o /tmp/badges.json || { echo "Credly API request failed"; exit 1; }
+          python3 << 'EOF'
           import json, sys, re
           from datetime import date
 
-          raw = sys.stdin.read()
+          with open('/tmp/badges.json', 'r') as f:
+              raw = f.read()
           try:
               data = json.loads(raw)
           except json.JSONDecodeError:
