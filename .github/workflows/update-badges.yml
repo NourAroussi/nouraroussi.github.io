@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Fetch badges from Credly
         run: |
@@ -19,7 +19,17 @@ jobs:
           import json, sys, re
           from datetime import date
 
-          data = json.load(sys.stdin)
+          raw = sys.stdin.read()
+          try:
+              data = json.loads(raw)
+          except json.JSONDecodeError:
+              print(f"Failed to parse Credly response: {raw[:500]}")
+              sys.exit(1)
+
+          if 'data' not in data:
+              print(f"Unexpected response structure: {list(data.keys())}")
+              sys.exit(1)
+
           today = date.today().isoformat()
 
           # Filter out expired and stackable badges
