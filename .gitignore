@@ -6,3 +6,4 @@ Thumbs.db
 *~
 .vscode
 .idea
+.kiro/hooks/track-with-agent.kiro.hook
