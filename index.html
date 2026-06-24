@@ -11,12 +11,15 @@
     <meta property="og:description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications. Hands-on security labs, network defense, and cloud infrastructure.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nouraroussi.github.io">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://nouraroussi.github.io/preview.png">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nour Aroussi - Cloud Security & Network Engineer">
     <meta name="twitter:description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications.">
+    <meta name="twitter:image" content="https://nouraroussi.github.io/preview.png">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #ffffff;
@@ -168,6 +171,7 @@
         <a href="#experience" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Experience</a>
         <a href="#projects" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Projects</a>
     </nav>
+    <div style="text-align:center; padding:8px; background:rgba(99,102,241,0.08); border-bottom:1px solid rgba(99,102,241,0.1); font-size:0.8rem; color:#4f46e5;">📖 Currently attending <a href="https://www.sans.edu/cyber-security-programs/undergraduate-certificate" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:underline;">SANS Institute of Technology — Applied Cybersecurity Undergraduate Certificate</a></div>
     <div class="floating-bg" id="floatingBg"></div>
 
     <header class="content">
@@ -178,10 +182,6 @@
                 <span style="display:inline-flex; align-items:center; gap:5px;">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
                     Boston, MA | Open to Remote
-                </span>
-                <span id="phn" style="display:inline-flex; align-items:center; gap:5px;">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-                    Phone
                 </span>
                 <a id="eml" style="display:inline-flex; align-items:center; gap:5px; color:inherit; text-decoration:none; cursor:pointer;">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -352,7 +352,11 @@
         <p>© 2026 Nour Aroussi · Built with HTML, CSS & JavaScript</p>
     </footer>
 
+    <button id="topBtn" onclick="window.scrollTo(0,0)" style="display:none; position:fixed; bottom:20px; right:20px; z-index:100; background:#4f46e5; color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.2);">↑</button>
     <script>
+        // Back to top button
+        window.addEventListener('scroll', function(){ document.getElementById('topBtn').style.display = window.scrollY > 300 ? 'block' : 'none'; });
+
         // Job details toggle
         function toggleJob(id, btn) {
             const el = document.getElementById(id);
@@ -459,8 +463,6 @@
             });
         // Email obfuscation
         (function(){var u='arnourssi',d='gmail.com',a=document.getElementById('eml');a.href='mailto:'+u+'@'+d;})();
-        // Phone obfuscation
-        (function(){var p='+1 (646) 764-4871',el=document.getElementById('phn');el.lastChild.textContent=p;})();
 
         const badges = [
             "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png",
