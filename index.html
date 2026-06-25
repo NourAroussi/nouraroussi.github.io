@@ -150,6 +150,14 @@
             .timeline-dot { position: relative !important; left: auto !important; transform: none !important; margin: 8px 0; }
             .theme-toggle { position: static !important; display: inline-block; margin: 8px 4px; }
         }
+        /* Print stylesheet */
+        @media print {
+            .theme-toggle, .floating-bg, #topBtn, nav, .footer { display: none !important; }
+            body, body.dark { background: white !important; color: black !important; }
+            .project-card { border: 1px solid #ccc !important; break-inside: avoid; }
+            .projects-section h2 { color: black !important; }
+            a { color: black !important; text-decoration: underline; }
+        }
         /* Footer */
         .footer {
             text-align: center;
@@ -162,8 +170,8 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="document.body.classList.toggle('dark'); this.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';">🌙 Dark</button>
-    <button class="theme-toggle" style="right:auto; left:16px;" onclick="const bg=document.getElementById('floatingBg'); bg.style.display=bg.style.display==='none'?'block':'none'; this.textContent=bg.style.display==='none'?'🎖️ Badges':'🚫 Badges';">🚫 Badges</button>
+    <button class="theme-toggle" aria-label="Toggle dark mode" onclick="document.body.classList.toggle('dark'); localStorage.setItem('theme', document.body.classList.contains('dark')?'dark':'light'); this.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';">🌙 Dark</button>
+    <button class="theme-toggle" aria-label="Toggle floating badges" style="right:auto; left:16px;" onclick="const bg=document.getElementById('floatingBg'); bg.style.display=bg.style.display==='none'?'block':'none'; this.textContent=bg.style.display==='none'?'🎖️ Badges':'🚫 Badges';">🚫 Badges</button>
 
     <nav style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.9); backdrop-filter:blur(8px); border-bottom:1px solid rgba(99,102,241,0.1); padding:10px 20px; text-align:center; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
         <a href="#skills" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Skills</a>
@@ -352,10 +360,13 @@
         <p>© 2026 Nour Aroussi · Built with HTML, CSS & JavaScript</p>
     </footer>
 
-    <button id="topBtn" onclick="window.scrollTo(0,0)" style="display:none; position:fixed; bottom:20px; right:20px; z-index:100; background:#4f46e5; color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.2);">↑</button>
+    <button id="topBtn" aria-label="Back to top" onclick="window.scrollTo(0,0)" style="display:none; position:fixed; bottom:20px; right:20px; z-index:100; background:#4f46e5; color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.2);">↑</button>
     <script>
         // Back to top button
         window.addEventListener('scroll', function(){ document.getElementById('topBtn').style.display = window.scrollY > 300 ? 'block' : 'none'; });
+
+        // Restore dark mode preference
+        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark'); document.querySelector('.theme-toggle').textContent = '☀️ Light'; }
 
         // Job details toggle
         function toggleJob(id, btn) {
@@ -371,39 +382,39 @@
 
         // Certifications - ordered by level (data from Credly API)
         const certs = [
-            { name: "CISSP", img: "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png", url: "https://www.credly.com/badges/2ab67e07-79bb-4320-ba1d-ee1a98d4b901/public_url" },
-            { name: "GIAC GSEC", img: "https://images.credly.com/images/8e6bde54-8a33-4ec0-9d70-90fcde581bcf/image.png", url: "https://www.credly.com/badges/64bdc6e8-0694-4852-8732-6fc89edf029a/public_url" },
-            { name: "GIAC GFACT", img: "https://images.credly.com/images/2d9b3293-9295-4ac3-a326-1bb7013225a4/image.png", url: "https://www.credly.com/badges/773fa553-b58e-408a-98b4-d7cbb6a6048a/public_url" },
-            { name: "CompTIA SecurityX", img: "https://images.credly.com/images/5343b652-c9a0-418e-bfaf-7ed5a2ddd0c4/blob", url: "https://www.credly.com/badges/f48ce6d5-9eba-4573-9ba9-f19247e113f8/public_url" },
-            { name: "AWS Security Specialty", img: "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png", url: "https://www.credly.com/badges/3edcb458-e2a2-455f-8bbc-4939c5875d17/public_url" },
-            { name: "AWS Solutions Architect", img: "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png", url: "https://www.credly.com/badges/007efa5c-f9cb-41e0-993b-c60ba32f5fd4/public_url" },
-            { name: "AWS CloudOps Engineer", img: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob", url: "https://www.credly.com/badges/3c8cc46b-2e7d-4d5d-a7f1-113761b042f2/public_url" },
-            { name: "AWS Developer", img: "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png", url: "https://www.credly.com/badges/502b8e88-7171-4e1e-b6ce-60e3e1ed0295/public_url" },
-            { name: "AWS Cloud Practitioner", img: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png", url: "https://www.credly.com/badges/2b6d2680-5c80-4bc3-b09a-6deebac5937b/public_url" },
-            { name: "AWS AI Practitioner", img: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png", url: "https://www.credly.com/badges/9e3369a9-48a0-457c-9320-8a907f70aeb1/public_url" },
-            { name: "CCNA", img: "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png", url: "https://www.credly.com/badges/6bf64932-3da4-453e-b1bc-be5297794f4a/public_url" },
-            { name: "CompTIA CySA+", img: "https://images.credly.com/images/dcd99b5b-da24-40a6-9364-62126d590c37/blob", url: "https://www.credly.com/badges/b72791fd-eedc-44d3-9cf6-1d706c1a1785/public_url" },
-            { name: "CompTIA PenTest+", img: "https://images.credly.com/images/c7ac176b-15a3-4726-827a-e8cee8fe44dc/blob", url: "https://www.credly.com/badges/b7c79cc3-beed-4041-80b9-31cd54c95114/public_url" },
-            { name: "CompTIA Security+", img: "https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob", url: "https://www.credly.com/badges/943a6ca8-7773-4d2e-a6d4-6d37157bf78e/public_url" },
-            { name: "CompTIA SecAI+", img: "https://images.credly.com/images/7c798dfc-1610-42c6-8729-2b735f88fab0/blob", url: "https://www.credly.com/badges/34e1fe77-fc8a-4462-a0c2-03ba4fa8822c/public_url" },
-            { name: "CompTIA Cloud+", img: "https://images.credly.com/images/b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe/blob", url: "https://www.credly.com/badges/19c4b78c-7950-4d43-9d0f-d84c5113aa14/public_url" },
-            { name: "CompTIA Linux+", img: "https://images.credly.com/images/c8ba8fa6-ab8b-4df7-879f-4ae7b98b2765/blob", url: "https://www.credly.com/badges/3659c7e8-d337-4be8-a06e-4899638ebf43/public_url" },
-            { name: "CompTIA Server+", img: "https://images.credly.com/images/07378420-4407-4f09-a4d7-9301d87dec34/blob", url: "https://www.credly.com/badges/55b7f064-d5a7-45ef-9904-59c3cfd9dada/public_url" },
-            { name: "CompTIA Network+", img: "https://images.credly.com/images/c70ba73e-3c8a-46fa-9d60-4a9af94ad662/blob", url: "https://www.credly.com/badges/261de691-5759-4854-80e7-6e630617c1af/public_url" },
-            { name: "CompTIA A+", img: "https://images.credly.com/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob", url: "https://www.credly.com/badges/e9914f41-0890-4474-8598-0064f5c0a29a/public_url" },
-            { name: "ISC2 CC", img: "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png", url: "https://www.credly.com/badges/a2364193-22e1-483c-8d34-6a942282a8c0/public_url" },
+            { name: "CISSP", img: "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png", url: "https://www.credly.com/badges/2ab67e07-79bb-4320-ba1d-ee1a98d4b901/public_url", date: "Apr 2026" },
+            { name: "GIAC GSEC", img: "https://images.credly.com/images/8e6bde54-8a33-4ec0-9d70-90fcde581bcf/image.png", url: "https://www.credly.com/badges/64bdc6e8-0694-4852-8732-6fc89edf029a/public_url", date: "Apr 2026" },
+            { name: "GIAC GFACT", img: "https://images.credly.com/images/2d9b3293-9295-4ac3-a326-1bb7013225a4/image.png", url: "https://www.credly.com/badges/773fa553-b58e-408a-98b4-d7cbb6a6048a/public_url", date: "Feb 2026" },
+            { name: "CompTIA SecurityX", img: "https://images.credly.com/images/5343b652-c9a0-418e-bfaf-7ed5a2ddd0c4/blob", url: "https://www.credly.com/badges/f48ce6d5-9eba-4573-9ba9-f19247e113f8/public_url", date: "Nov 2025" },
+            { name: "AWS Security Specialty", img: "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png", url: "https://www.credly.com/badges/3edcb458-e2a2-455f-8bbc-4939c5875d17/public_url", date: "Jan 2026" },
+            { name: "AWS Solutions Architect", img: "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png", url: "https://www.credly.com/badges/007efa5c-f9cb-41e0-993b-c60ba32f5fd4/public_url", date: "Dec 2025" },
+            { name: "AWS CloudOps Engineer", img: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob", url: "https://www.credly.com/badges/3c8cc46b-2e7d-4d5d-a7f1-113761b042f2/public_url", date: "Jan 2026" },
+            { name: "AWS Developer", img: "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png", url: "https://www.credly.com/badges/502b8e88-7171-4e1e-b6ce-60e3e1ed0295/public_url", date: "Jan 2026" },
+            { name: "AWS Cloud Practitioner", img: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png", url: "https://www.credly.com/badges/2b6d2680-5c80-4bc3-b09a-6deebac5937b/public_url", date: "Mar 2025" },
+            { name: "AWS AI Practitioner", img: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png", url: "https://www.credly.com/badges/9e3369a9-48a0-457c-9320-8a907f70aeb1/public_url", date: "Apr 2025" },
+            { name: "CCNA", img: "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png", url: "https://www.credly.com/badges/6bf64932-3da4-453e-b1bc-be5297794f4a/public_url", date: "Jan 2026" },
+            { name: "CompTIA CySA+", img: "https://images.credly.com/images/dcd99b5b-da24-40a6-9364-62126d590c37/blob", url: "https://www.credly.com/badges/b72791fd-eedc-44d3-9cf6-1d706c1a1785/public_url", date: "Oct 2024" },
+            { name: "CompTIA PenTest+", img: "https://images.credly.com/images/c7ac176b-15a3-4726-827a-e8cee8fe44dc/blob", url: "https://www.credly.com/badges/b7c79cc3-beed-4041-80b9-31cd54c95114/public_url", date: "Dec 2024" },
+            { name: "CompTIA Security+", img: "https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob", url: "https://www.credly.com/badges/943a6ca8-7773-4d2e-a6d4-6d37157bf78e/public_url", date: "Dec 2025" },
+            { name: "CompTIA SecAI+", img: "https://images.credly.com/images/7c798dfc-1610-42c6-8729-2b735f88fab0/blob", url: "https://www.credly.com/badges/34e1fe77-fc8a-4462-a0c2-03ba4fa8822c/public_url", date: "Oct 2025" },
+            { name: "CompTIA Cloud+", img: "https://images.credly.com/images/b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe/blob", url: "https://www.credly.com/badges/19c4b78c-7950-4d43-9d0f-d84c5113aa14/public_url", date: "Jan 2026" },
+            { name: "CompTIA Linux+", img: "https://images.credly.com/images/c8ba8fa6-ab8b-4df7-879f-4ae7b98b2765/blob", url: "https://www.credly.com/badges/3659c7e8-d337-4be8-a06e-4899638ebf43/public_url", date: "Jan 2026" },
+            { name: "CompTIA Server+", img: "https://images.credly.com/images/07378420-4407-4f09-a4d7-9301d87dec34/blob", url: "https://www.credly.com/badges/55b7f064-d5a7-45ef-9904-59c3cfd9dada/public_url", date: "Dec 2025" },
+            { name: "CompTIA Network+", img: "https://images.credly.com/images/c70ba73e-3c8a-46fa-9d60-4a9af94ad662/blob", url: "https://www.credly.com/badges/261de691-5759-4854-80e7-6e630617c1af/public_url", date: "Dec 2025" },
+            { name: "CompTIA A+", img: "https://images.credly.com/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob", url: "https://www.credly.com/badges/e9914f41-0890-4474-8598-0064f5c0a29a/public_url", date: "Dec 2025" },
+            { name: "ISC2 CC", img: "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png", url: "https://www.credly.com/badges/a2364193-22e1-483c-8d34-6a942282a8c0/public_url", date: "Jun 2024" },
 
-            { name: "PCAP Python", img: "https://images.credly.com/images/4e248e82-9e87-4a63-9263-250fafe5fb1f/image.png", url: "https://www.credly.com/badges/722bae21-f48e-4b62-88aa-23fc8a093208/public_url" },
-            { name: "Fortinet FCF", img: "https://images.credly.com/images/22a0ece5-ff05-4594-8320-25e55e9ae203/image.png", url: "https://www.credly.com/badges/7e4c9d63-a4de-4ec6-81c7-45adea3ddde8/public_url" },
+            { name: "PCAP Python", img: "https://images.credly.com/images/4e248e82-9e87-4a63-9263-250fafe5fb1f/image.png", url: "https://www.credly.com/badges/722bae21-f48e-4b62-88aa-23fc8a093208/public_url", date: "Feb 2026" },
+            { name: "Fortinet FCF", img: "https://images.credly.com/images/22a0ece5-ff05-4594-8320-25e55e9ae203/image.png", url: "https://www.credly.com/badges/7e4c9d63-a4de-4ec6-81c7-45adea3ddde8/public_url", date: "Dec 2025" },
 
-            { name: "Well-Architected", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url" },
-            { name: "AWS Cloud Quest: Solutions Architect", img: "https://images.credly.com/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob", url: "https://www.credly.com/badges/dc13a382-0332-4aec-96e3-cacbf895aa14/public_url" },
-            { name: "AWS Cloud Quest: Security", img: "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob", url: "https://www.credly.com/badges/9f825acd-ff79-48f5-a476-c4b0feb6d997/public_url" },
-            { name: "AWS Cloud Quest: Networking", img: "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob", url: "https://www.credly.com/badges/e96555dd-658c-4b58-acc5-6d4f2685d42a/public_url" },
-            { name: "AWS Cloud Quest: Gen AI", img: "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob", url: "https://www.credly.com/badges/4b534260-7275-4e75-b497-4ba4ced927cd/public_url" },
-            { name: "AWS Healthcare Quest", img: "https://images.credly.com/images/aed5aea8-8054-431f-aa1c-6b33b256d2ca/blob", url: "https://www.credly.com/badges/d1a9a6e0-db31-4bde-8b87-0fd6f4f0b76d/public_url" },
-            { name: "AWS Cloud Quest: Cloud Practitioner", img: "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob", url: "https://www.credly.com/badges/9c296a50-d5e1-4cf1-888b-154a310e0086/public_url" },
-            { name: "Academic Qualifications", img: "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png", url: "https://www.credly.com/badges/37386789-593c-479d-9640-19b8314daed7/public_url" },
+            { name: "Well-Architected", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url", date: "Mar 2026" },
+            { name: "AWS Cloud Quest: Solutions Architect", img: "https://images.credly.com/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob", url: "https://www.credly.com/badges/dc13a382-0332-4aec-96e3-cacbf895aa14/public_url", date: "Apr 2026" },
+            { name: "AWS Cloud Quest: Security", img: "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob", url: "https://www.credly.com/badges/9f825acd-ff79-48f5-a476-c4b0feb6d997/public_url", date: "Apr 2026" },
+            { name: "AWS Cloud Quest: Networking", img: "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob", url: "https://www.credly.com/badges/e96555dd-658c-4b58-acc5-6d4f2685d42a/public_url", date: "Apr 2026" },
+            { name: "AWS Cloud Quest: Gen AI", img: "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob", url: "https://www.credly.com/badges/4b534260-7275-4e75-b497-4ba4ced927cd/public_url", date: "Apr 2026" },
+            { name: "AWS Healthcare Quest", img: "https://images.credly.com/images/aed5aea8-8054-431f-aa1c-6b33b256d2ca/blob", url: "https://www.credly.com/badges/d1a9a6e0-db31-4bde-8b87-0fd6f4f0b76d/public_url", date: "May 2026" },
+            { name: "AWS Cloud Quest: Cloud Practitioner", img: "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob", url: "https://www.credly.com/badges/9c296a50-d5e1-4cf1-888b-154a310e0086/public_url", date: "Jun 2026" },
+            { name: "Academic Qualifications", img: "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png", url: "https://www.credly.com/badges/37386789-593c-479d-9640-19b8314daed7/public_url", date: "Jan 2024" },
         ];
 
         let certsExpanded = false;

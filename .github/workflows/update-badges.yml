@@ -64,19 +64,20 @@ jobs:
               name = b['badge_template']['name']
               img = b['image_url']
               url = f"https://www.credly.com/badges/{b['id']}/public_url"
+              issued = b.get('issued_at_date', '')
               short = name.replace(' Stackable Certification', '').replace(' ce Certification', '').replace(' - Training Badge', '').replace('Certified ', '').replace('CompTIA ', '').replace('AWS ', '')
-              entries.append((get_priority(name), short, img, url))
+              entries.append((get_priority(name), short, img, url, issued))
 
           entries.sort(key=lambda x: x[0])
 
           # Generate JS array
           js_lines = []
-          for _, name, img, url in entries:
-              js_lines.append(f'            {{ name: "{name}", img: "{img}", url: "{url}" }},')
+          for _, name, img, url, issued in entries:
+              js_lines.append(f'            {{ name: "{name}", img: "{img}", url: "{url}", date: "{issued}" }},')
           js_certs = '\n'.join(js_lines)
 
           # Generate floating badges array
-          bg_lines = [f'            "{img}"' for _, _, img, _ in entries]
+          bg_lines = [f'            "{img}"' for _, _, img, _, _ in entries]
           js_bg = ',\n'.join(bg_lines)
 
           # Read index.html
