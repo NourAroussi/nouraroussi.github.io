@@ -34,33 +34,62 @@ jobs:
 
           today = date.today().isoformat()
 
-          # Filter out expired and stackable badges
-          badges = [b for b in data['data']
+          # Certs display — NO stackable
+          certs_badges = [b for b in data['data']
                     if 'Stackable' not in b['badge_template']['name']
                     and (not b.get('expires_at_date') or b['expires_at_date'] >= today)]
 
-          # Priority order
-          priority = {
-              'CISSP': 1, 'GSEC': 2, 'GFACT': 3, 'SecurityX': 4,
-              'Security – Specialty': 5, 'Solutions Architect – Associate': 6,
-              'CloudOps': 7, 'Developer – Associate': 8,
-              'Cloud Practitioner': 9, 'AI Practitioner': 10,
-              'CCNA': 11, 'CySA+': 12, 'PenTest+': 13, 'Security+': 14,
-              'SecAI+': 15, 'Cloud+': 16, 'Linux+': 17, 'Server+': 18,
-              'Network+': 19, 'A+ ce': 20,
-          }
+          # Floating background — ALL badges including stackable
+          all_badges = [b for b in data['data']
+                    if not b.get('expires_at_date') or b['expires_at_date'] >= today]
 
           def get_priority(name):
-              for key, val in priority.items():
+              # Cloud Quest must be checked BEFORE Cloud Practitioner
+              if 'Quest' in name or 'Industry Quest' in name:
+                  return 70
+
+              # Expert / Professional level
+              expert = {
+                  'CISSP': 1, 'GSEC': 2, 'SecurityX': 3,
+                  'Security – Specialty': 4, 'CySA+': 5, 'PenTest+': 6,
+              }
+              for key, val in expert.items():
                   if key in name:
                       return val
-              if 'Stackable' in name or 'Specialist' in name or 'Professional' in name or 'Expert' in name:
+
+              # Associate level
+              associate = {
+                  'Solutions Architect – Associate': 20, 'CloudOps': 21, 'Developer – Associate': 22,
+                  'CCNA': 23, 'PCAP': 24,
+                  'Cloud+': 25, 'Linux+': 26, 'Server+': 27, 'SecAI+': 28,
+              }
+              for key, val in associate.items():
+                  if key in name:
+                      return val
+
+              # Foundational level
+              foundational = {
+                  'Cloud Practitioner': 40, 'AI Practitioner': 41,
+                  'Security+': 42, 'Network+': 43, 'A+ ce': 44,
+                  'GFACT': 45,
+              }
+              for key, val in foundational.items():
+                  if key in name:
+                      return val
+
+              if 'Cybersecurity (CC)' in name:
                   return 50
+              if 'Fortinet' in name or 'FortiGate' in name:
+                  return 60
+              if 'Well-Architected' in name:
+                  return 75
+              if 'Academic' in name or 'Qualifications' in name:
+                  return 99
               return 80
 
-          # Build sorted cert entries
+          # Build sorted cert entries (no stackable)
           entries = []
-          for b in badges:
+          for b in certs_badges:
               name = b['badge_template']['name']
               img = b['image_url']
               url = f"https://www.credly.com/badges/{b['id']}/public_url"
@@ -70,14 +99,17 @@ jobs:
 
           entries.sort(key=lambda x: x[0])
 
-          # Generate JS array
+          # Build floating badges (ALL including stackable)
+          all_imgs = [b['image_url'] for b in all_badges]
+
+          # Generate JS array for certs
           js_lines = []
           for _, name, img, url, issued in entries:
               js_lines.append(f'            {{ name: "{name}", img: "{img}", url: "{url}", date: "{issued}" }},')
           js_certs = '\n'.join(js_lines)
 
-          # Generate floating badges array
-          bg_lines = [f'            "{img}"' for _, _, img, _, _ in entries]
+          # Generate floating badges array (all badges)
+          bg_lines = [f'            "{img}"' for img in all_imgs]
           js_bg = ',\n'.join(bg_lines)
 
           # Read index.html
@@ -99,12 +131,13 @@ jobs:
           )
 
           # Update count
-          html = re.sub(r'const count = \d+;', f'const count = {len(entries)};', html)
+          html = re.sub(r'const count = \d+;', f'const count = {len(all_imgs)};', html)
 
           with open('index.html', 'w') as f:
               f.write(html)
 
-          print(f"Updated {len(entries)} badges")
+          print(f"Certs displayed: {len(entries)}")
+          print(f"Floating background: {len(all_imgs)} (includes stackable)")
           EOF
 
       - name: Commit and push if changed
