@@ -50,22 +50,30 @@ jobs:
 
               # Expert / Professional level
               expert = {
-                  'CISSP': 1, 'GSEC': 2, 'SecurityX': 3,
-                  'Security – Specialty': 4, 'CySA+': 5, 'PenTest+': 6,
+                  'CISSP': 1, 'GSEC': 2, 'GCIH': 3, 'SecurityX': 4,
+                  'Security – Specialty': 5, 'CySA+': 6, 'PenTest+': 7,
               }
               for key, val in expert.items():
                   if key in name:
                       return val
 
-              # Associate level
+              # Fortinet Associate → associate tier (next to PCAP)
+              if 'Fortinet' in name and 'Associate' in name:
+                  return 25
+
+              # Associate level (fixed order — new certs append at end of tier)
               associate = {
                   'Solutions Architect – Associate': 20, 'CloudOps': 21, 'Developer – Associate': 22,
                   'CCNA': 23, 'PCAP': 24,
-                  'Cloud+': 25, 'Linux+': 26, 'Server+': 27, 'SecAI+': 28,
+                  'Cloud+': 26, 'Linux+': 27, 'Server+': 28, 'SecAI+': 29,
               }
               for key, val in associate.items():
                   if key in name:
                       return val
+
+              # Fortinet Fundamentals → foundational tier
+              if 'Fortinet' in name and 'Fundamentals' in name:
+                  return 46
 
               # Foundational level
               foundational = {
@@ -79,13 +87,12 @@ jobs:
 
               if 'Cybersecurity (CC)' in name:
                   return 50
-              if 'Fortinet' in name or 'FortiGate' in name:
-                  return 60
               if 'Well-Architected' in name:
                   return 75
               if 'Academic' in name or 'Qualifications' in name:
                   return 99
-              return 80
+              # Unknown new certs → end of associate tier (won't displace existing order)
+              return 35
 
           # Build sorted cert entries (no stackable)
           entries = []
