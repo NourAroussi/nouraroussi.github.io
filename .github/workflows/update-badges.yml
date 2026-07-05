@@ -50,8 +50,12 @@ jobs:
 
               # Expert / Professional level
               expert = {
-                  'CISSP': 1, 'GSEC': 2, 'GCIH': 3, 'SecurityX': 4,
-                  'Security – Specialty': 5, 'CySA+': 6, 'PenTest+': 7,
+                  'CISSP': 1,
+                  'Solutions Architect – Professional': 2,
+                  'Security – Specialty': 3,
+                  'GCIH': 4,
+                  'SecurityX': 5,
+                  'CySA+': 6, 'PenTest+': 7,
               }
               for key, val in expert.items():
                   if key in name:
@@ -66,6 +70,7 @@ jobs:
                   'Solutions Architect – Associate': 20, 'CloudOps': 21, 'Developer – Associate': 22,
                   'CCNA': 23, 'PCAP': 24,
                   'Cloud+': 26, 'Linux+': 27, 'Server+': 28, 'SecAI+': 29,
+                  'GSEC': 30, 'GFACT': 31,
               }
               for key, val in associate.items():
                   if key in name:
@@ -79,7 +84,6 @@ jobs:
               foundational = {
                   'Cloud Practitioner': 40, 'AI Practitioner': 41,
                   'Security+': 42, 'Network+': 43, 'A+ ce': 44,
-                  'GFACT': 45,
               }
               for key, val in foundational.items():
                   if key in name:
