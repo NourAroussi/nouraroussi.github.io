@@ -423,7 +423,7 @@
         let certsExpanded = false;
         function renderCerts() {
             const grid = document.getElementById('certsGrid');
-            const visible = certsExpanded ? certs : certs.slice(0, 8);
+            const visible = certsExpanded ? certs : certs.slice(0, 5);
             grid.innerHTML = visible.map(c => `
                 <a href="${c.url}" target="_blank" rel="noopener noreferrer" style="text-align:center; text-decoration:none; color:inherit;">
                     <img src="${c.img}" alt="${c.name}" loading="lazy" style="width:80px; height:80px; border-radius:8px; transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">

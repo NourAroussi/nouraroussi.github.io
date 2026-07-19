@@ -144,6 +144,9 @@ jobs:
           # Update count
           html = re.sub(r'const count = \d+;', f'const count = {len(all_imgs)};', html)
 
+          # Ensure initial certs display shows 8
+          html = re.sub(r'certs\.slice\(0,\s*\d+\)', 'certs.slice(0, 8)', html)
+
           with open('index.html', 'w') as f:
               f.write(html)
 
