@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.credly.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'none'; frame-ancestors 'none';">
-    <title>Nour Aroussi - Cloud Security Engineer</title>
-    <meta name="description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, and PenTest+ certifications. Hands-on AWS security automation, firewall architecture, IDS/IPS, and network defense.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.credly.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https://api.github.com; frame-ancestors 'none';">
+    <title>Nour Aroussi - Cloud Security & Network Engineer</title>
+    <meta name="description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications. Building hands-on security labs and defending enterprise networks.">
     <meta name="author" content="Nour Aroussi">
-    <meta property="og:title" content="Nour Aroussi - Cloud Security Engineer">
-    <meta property="og:description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, AWS Security Specialty certifications. AWS threat detection, security automation, firewall architecture, and network defense engineering.">
+    <meta property="og:title" content="Nour Aroussi - Cloud Security & Network Engineer">
+    <meta property="og:description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications. Hands-on security labs, network defense, and cloud infrastructure.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nouraroussi.github.io">
     <meta property="og:image" content="https://nouraroussi.github.io/preview.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nour Aroussi - Cloud Security Engineer">
-    <meta name="twitter:description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, and PenTest+ certifications.">
+    <meta name="twitter:title" content="Nour Aroussi - Cloud Security & Network Engineer">
+    <meta name="twitter:description" content="Cloud Security & Network Engineer with CISSP, GSEC, AWS, and Cisco certifications.">
     <meta name="twitter:image" content="https://nouraroussi.github.io/preview.png">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
     <style>
@@ -143,72 +143,6 @@
             display: flex;
             gap: 12px;
         }
-        /* Portfolio card enhancements */
-        .portfolio-card {
-            background: rgba(241, 245, 249, 0.9);
-            border: 1px solid rgba(99, 102, 241, 0.15);
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: block;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
-        }
-        body.dark .portfolio-card {
-            background: rgba(30, 41, 59, 0.9);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-        .portfolio-card .portfolio-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .portfolio-card .portfolio-icon {
-            font-size: 1.5rem;
-        }
-        .portfolio-card h3 {
-            color: #4f46e5;
-            font-size: 1rem;
-            margin: 0;
-        }
-        body.dark .portfolio-card h3 { color: #a5b4fc; }
-        .portfolio-card .portfolio-desc {
-            font-size: 0.83rem;
-            color: #64748b;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-        body.dark .portfolio-card .portfolio-desc { color: #94a3b8; }
-        .portfolio-card .portfolio-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-        .portfolio-card .skill-tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #4f46e5;
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-        body.dark .portfolio-card .skill-tag {
-            background: rgba(99, 102, 241, 0.2);
-            color: #a5b4fc;
-        }
-        .portfolio-card .portfolio-meta {
-            font-size: 0.72rem;
-            color: #94a3b8;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         /* Mobile responsive */
         @media (max-width: 768px) {
             .timeline-row { flex-direction: column !important; }
@@ -243,7 +177,7 @@
         <a href="#skills" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Skills</a>
         <a href="#certifications" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Certifications</a>
         <a href="#experience" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Experience</a>
-        <a href="#portfolios" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Portfolio</a>
+        <a href="#projects" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Projects</a>
     </nav>
     <div style="text-align:center; padding:8px; background:rgba(99,102,241,0.08); border-bottom:1px solid rgba(99,102,241,0.1); font-size:0.8rem; color:#4f46e5;">📖 Currently attending <a href="https://www.sans.edu/cyber-security-programs/undergraduate-certificate" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:underline;">SANS Institute of Technology — Applied Cybersecurity Undergraduate Certificate</a></div>
     <div class="floating-bg" id="floatingBg"></div>
@@ -251,7 +185,7 @@
     <header class="content">
         <div class="placeholder">
             <h1>Nour Aroussi</h1>
-            <p style="font-size:1.1rem; color:#4f46e5; margin-bottom:16px;">Cloud Security Engineer</p>
+            <p style="font-size:1.1rem; color:#4f46e5; margin-bottom:16px;">Cloud Security & Network Engineer</p>
             <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; font-size:0.9rem;">
                 <span style="display:inline-flex; align-items:center; gap:5px;">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
@@ -271,23 +205,45 @@
                 </a>
             </div>
             <p style="max-width:650px; margin:20px auto 0; line-height:1.7; font-size:0.9rem; color:#475569;">
-                Cloud Security Engineer specializing in AWS threat detection, security automation, and cloud-native defense — backed by a strong foundation in enterprise network security. Holds CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, AWS SAP, SecurityX, PenTest+, and CySA+. Applies that knowledge hands-on through deployable security labs and working portfolios covering AWS GuardDuty automation, Terraform/CDK infrastructure, CIS compliance engines, real-time streaming systems, and container orchestration with k3s. Currently pursuing the SANS Applied Cybersecurity Certificate (GSEC · GCIH · GPCS). Brings 5+ years of enterprise infrastructure and network security engineering at Amazon across hybrid cloud environments.
+                Cloud Security & Network Engineer with a passion for building hands-on security lab environments. Currently pursuing the SANS Applied Cybersecurity Certificate focusing on Cloud Security (GSEC, GCIH, and GPCS) while developing practical skills in network defense, Active Directory security, and firewall architecture. Holds multiple CompTIA, AWS, and Cisco certifications with a focus on bridging cloud infrastructure and network security.
             </p>
         </div>
     </header>
 
     <main>
-
     <!-- Skills Section -->
     <section class="projects-section" id="skills">
         <h2>Skills</h2>
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:6px 20px; font-size:0.78rem; color:#475569; line-height:1.8;">
-            <span><strong style="color:#4f46e5;">Network Security:</strong> Firewalls (Cisco ASA, Palo Alto, Juniper, pfSense), IDS/IPS (Suricata, Snort), VPN, 802.1X NAC, VLAN Segmentation, Zero Trust</span>
-            <span><strong style="color:#4f46e5;">Threat Detection & Response:</strong> SIEM (Splunk, Sentinel), Zeek, Wireshark, Forensics, Incident Response (GCIH)</span>
-            <span><strong style="color:#4f46e5;">Cloud Security:</strong> AWS Security Specialty, GuardDuty, Security Hub, IAM, CloudTrail, Terraform, CDK, Azure</span>
-            <span><strong style="color:#4f46e5;">Offensive / Red Team:</strong> Nmap, Metasploit, Burp Suite, Kali, BloodHound, Responder, CrackMapExec, PenTest+</span>
-            <span><strong style="color:#4f46e5;">Networking:</strong> TCP/IP, OSPF/BGP, DNS, DHCP, Cisco Meraki, Aruba, Juniper</span>
-            <span><strong style="color:#4f46e5;">Platforms & Automation:</strong> Linux, Windows Server, Active Directory, ESXi, Docker, Kubernetes, Python, Bash, PowerShell</span>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">AWS (IAM, VPC, CloudTrail, GuardDuty)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Terraform</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">AWS CDK</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Azure</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">TCP/IP</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">OSPF / BGP</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">DNS / DHCP</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Firewalls (pfSense, Cisco ASA, Juniper, SonicWall)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Cisco Switches</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Aruba Switches & Wireless</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Juniper Network Devices</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">IDS/IPS (Suricata, Snort)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">VPN (IPsec, OpenVPN)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">ACLs & VLAN Segmentation</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">802.1X / NAC</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Nmap</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Metasploit</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Wireshark</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">tcpdump</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Zeek</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Burp Suite</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Linux (Ubuntu, Kali)</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Windows Server</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Active Directory</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">ESXi / EVE-NG</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">PowerShell</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Bash</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Network Forensics</span>
+            <span class="project-card" style="padding:8px 14px; border-radius:20px; font-size:0.8rem;">Packet Capture & Analysis</span>
         </div>
     </section>
 
@@ -325,11 +281,12 @@
                     </div>
                     <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ring, Blink, Key & Sidewalk</div>
                     <ul id="job1" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
-                        <li>Enforce network security policy across hybrid LAN/WAN/wireless infrastructure, including VLAN segmentation, ACL management, and firewall rule reviews on Cisco Meraki, Aruba, and Juniper platforms</li>
-                        <li>Lead incident response for network security events: identify root cause, contain threats, and implement remediation — balancing live ticket queue with proactive hardening work</li>
-                        <li>Manage and secure enterprise network lab environments running VMware ESXi/vSphere, including hybrid on-premises/cloud connectivity and network isolation between test and production segments</li>
-                        <li>Maintain security-relevant operational documentation: network diagrams, access control records, change management logs, and runbooks for the Boston regional office</li>
-                        <li>Troubleshoot and harden endpoints across macOS, Windows, and Linux environments — applying security-first diagnostic methodology to reduce attack surface</li>
+                        <li>Perform day-to-day operations, monitoring, and troubleshooting of on-premises and cloud-connected network infrastructure supporting a hybrid workforce across the Boston regional office</li>
+                        <li>Respond to network incidents, identify root causes, and implement or escalate resolutions in a timely manner, balancing ticket queue management with project work and proactive network support</li>
+                        <li>Configure, maintain, and troubleshoot enterprise LAN, WAN, and wireless infrastructure leveraging Cisco Meraki, Aruba, and Juniper platforms to uphold uptime and availability standards</li>
+                        <li>Manage and troubleshoot enterprise network lab environments, including VMware ESXi nodes and vSphere clusters, supporting hybrid connectivity between on-premises and cloud environments</li>
+                        <li>Maintain accurate operational documentation including network diagrams, runbooks, and change records for regional infrastructure</li>
+                        <li>Support desktop-level troubleshooting across macOS, Windows, and Linux environments, applying strong analytical skills to problem resolution</li>
                     </ul>
                     <span onclick="toggleJob('job1',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2025</div>
@@ -352,12 +309,13 @@
                     </div>
                     <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ops Tech Solutions Delivery</div>
                     <ul id="job2" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
-                        <li>Secured multi-site LAN/WAN and wireless infrastructure across Delivery Stations and Fulfillment Centers, enforcing network segmentation and access control policies in high-availability environments</li>
-                        <li>Drove incident response and escalation for network and security events across a regional fleet, maintaining 99.9% SLA compliance within ITIL-aligned change management processes</li>
-                        <li>Evaluated and deployed network security appliances — including firewall and NAC solutions — to improve security posture across AMZL and Robotic Delivery Stations</li>
-                        <li>Managed hardware lifecycle, firmware patching, and vulnerability remediation for network equipment across multiple sites</li>
-                        <li>Built and secured IT and network infrastructure for new site launches, including initial firewall configuration and network segmentation design</li>
-                        <li>Coordinated 24/7 on-call security and network incident coverage, responding to critical outages and threats with rapid escalation</li>
+                        <li>Led infrastructure support for a regional team serving Delivery Stations and Fulfillment Centers, ensuring reliable LAN, WAN, and wireless connectivity across multi-site environments</li>
+                        <li>Managed escalated network and system support tickets while maintaining 99.9% SLA compliance, working within ITIL-aligned change management and incident response processes</li>
+                        <li>Coordinated 24/7 system and network support through rotating on-call coverage, responding to critical incidents and driving timely resolution</li>
+                        <li>Directed internal and external service providers to resolve technical issues within SLA requirements, including network hardware lifecycle management, patching, and firmware upgrades</li>
+                        <li>Evaluated and implemented hardware and software solutions — including network equipment and security appliances — to improve operational efficiency across AMZL and Robotic Delivery Stations</li>
+                        <li>Built and maintained IT and network infrastructure for new site launches</li>
+                        <li>Led hiring initiatives, trained new team members on network operations procedures, and maintained service and infrastructure documentation</li>
                     </ul>
                     <span onclick="toggleJob('job2',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Aug 2020</div>
@@ -387,11 +345,11 @@
         </div>
     </section>
 
-    <!-- Featured Portfolios Section -->
-    <section class="projects-section" id="portfolios">
-        <h2>Skills & Portfolio</h2>
-        <p style="text-align:center; color:#64748b; margin-bottom:24px; font-size:0.9rem;">Hands-on projects demonstrating real-world security and systems engineering skills. Every project is deployable with Terraform or AWS CDK.</p>
-        <div class="projects-grid" id="portfolioGrid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+    <!-- Projects Section - auto-fetches from GitHub -->
+    <section class="projects-section" id="projects">
+        <h2>GitHub Projects</h2>
+        <div class="projects-grid" id="projectsGrid">
+            <p style="text-align:center; color:#94a3b8;">Loading projects...</p>
         </div>
     </section>
 
@@ -481,81 +439,42 @@
         }
         renderCerts();
 
-        // Featured Portfolios - curated skills showcase
-        const portfolios = [
-            {
-                icon: "🏠",
-                name: "Home Labs",
-                desc: "3-node heterogeneous lab environment: ESXi hypervisor (64GB), EVE-NG network simulator (128GB), and Ubuntu bastion with k3s. Features pfSense zone-based firewall, Suricata IDS, Prometheus/Grafana observability, and Wazuh SIEM with custom MITRE ATT&CK detection rules.",
-                skills: ["ESXi 8.0", "EVE-NG", "pfSense", "Suricata", "k3s", "Prometheus", "Grafana", "Wazuh", "Docker"],
-                projects: 5,
-                repo: "00-Home-Labs-Portfolio"
-            },
-            {
-                icon: "🎓",
-                name: "AWS Security Architecture (Capstones)",
-                desc: "Real-world client engagements demonstrating AWS Solutions Architecture: HIPAA-compliant healthcare platform, centralized security monitoring for 50+ accounts, zero-trust portal with no IGW, and IoT fleet security at 50K devices — all with Terraform + CDK.",
-                skills: ["Terraform", "AWS CDK", "Organizations", "KMS", "Cognito", "IoT Core", "Verified Access", "PrivateLink", "Zero Trust", "HIPAA"],
-                projects: 4,
-                repo: "01-ReSkill-CAP-Portfolio"
-            },
-            {
-                icon: "🛡️",
-                name: "AWS Cloud Security",
-                desc: "Hands-on cloud security automation: GuardDuty auto-remediation in 60 seconds, CIS compliance engine with auto-fix, CloudTrail threat hunting with Athena, WAF/DDoS protection, and a secure Cloud Resume Challenge — all deployable with Terraform or CDK.",
-                skills: ["GuardDuty", "EventBridge", "Lambda", "AWS Config", "Athena", "WAF", "Shield", "CloudTrail", "Terraform", "CDK"],
-                projects: 5,
-                repo: "02-AWS-Security-Portfolio"
-            },
-            {
-                icon: "⚙️",
-                name: "Systems Development",
-                desc: "Production-grade distributed systems on AWS: serverless REST API with Cognito auth, event-driven pipeline with fan-out and DLQ, real-time Kinesis streaming, ECS Fargate with blue/green deploys, and multi-stage CI/CD pipeline — all with Terraform + CDK.",
-                skills: ["Lambda", "API Gateway", "DynamoDB", "SNS/SQS", "Kinesis", "ECS Fargate", "CodePipeline", "Terraform", "CDK", "Python"],
-                projects: 5,
-                repo: "03-SysDev-Portfolio"
-            }
-        ];
-
-        (function renderPortfolios() {
-            const grid = document.getElementById('portfolioGrid');
-            grid.innerHTML = '';
-            portfolios.forEach(p => {
-                const card = document.createElement('a');
-                card.href = `https://github.com/nouraroussi/${p.repo}`;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
-                card.className = 'portfolio-card';
-
-                const header = document.createElement('div');
-                header.className = 'portfolio-header';
-                header.innerHTML = `<span class="portfolio-icon">${p.icon}</span><h3>${p.name}</h3>`;
-
-                const desc = document.createElement('p');
-                desc.className = 'portfolio-desc';
-                desc.textContent = p.desc;
-
-                const skillsDiv = document.createElement('div');
-                skillsDiv.className = 'portfolio-skills';
-                p.skills.forEach(s => {
-                    const tag = document.createElement('span');
-                    tag.className = 'skill-tag';
-                    tag.textContent = s;
-                    skillsDiv.appendChild(tag);
+        // Fetch all public repos from GitHub profile
+        fetch('https://api.github.com/users/nouraroussi/repos?type=public&sort=updated&per_page=100')
+            .then(r => r.json())
+            .then(repos => {
+                const grid = document.getElementById('projectsGrid');
+                if (!Array.isArray(repos) || !repos.length) {
+                    grid.innerHTML = '<p style="text-align:center; color:#94a3b8;">Unable to load projects. <a href="https://github.com/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5;">View on GitHub →</a></p>';
+                    return;
+                }
+                grid.innerHTML = '';
+                repos.filter(r => !r.fork && r.name !== 'nouraroussi.github.io').forEach(repo => {
+                    const card = document.createElement('a');
+                    card.href = repo.html_url;
+                    card.target = '_blank';
+                    card.rel = 'noopener noreferrer';
+                    card.className = 'project-card';
+                    const h3 = document.createElement('h3');
+                    h3.textContent = repo.name.replace(/-/g, ' ');
+                    const p = document.createElement('p');
+                    p.textContent = repo.description || 'View project →';
+                    const meta = document.createElement('div');
+                    meta.className = 'meta';
+                    meta.textContent = [
+                        repo.language ? `🔧 ${repo.language}` : '',
+                        `⭐ ${repo.stargazers_count}`,
+                        `🔄 ${new Date(repo.updated_at).toLocaleDateString()}`
+                    ].filter(Boolean).join('  ');
+                    card.appendChild(h3);
+                    card.appendChild(p);
+                    card.appendChild(meta);
+                    grid.appendChild(card);
                 });
-
-                const meta = document.createElement('div');
-                meta.className = 'portfolio-meta';
-                meta.innerHTML = `<span>📁 ${p.projects} projects</span><span style="color:#4f46e5;">View on GitHub →</span>`;
-
-                card.appendChild(header);
-                card.appendChild(desc);
-                card.appendChild(skillsDiv);
-                card.appendChild(meta);
-                grid.appendChild(card);
+            })
+            .catch(() => {
+                document.getElementById('projectsGrid').innerHTML = '<p style="text-align:center; color:#94a3b8;">Unable to load projects. <a href="https://github.com/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5;">View on GitHub →</a></p>';
             });
-        })();
-
         // Email obfuscation
         (function(){var u='arnourssi',d='gmail.com',a=document.getElementById('eml');a.href='mailto:'+u+'@'+d;})();
 
