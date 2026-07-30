@@ -15,9 +15,6 @@ jobs:
 
       - name: Fetch badges from Credly
         run: |
-<<<<<<< HEAD
-          curl -sf -H 'Accept: application/json' -H 'User-Agent: Mozilla/5.0' 'https://www.credly.com/users/nouraroussi/badges.json' -o /tmp/badges.json || { echo "Credly API request failed"; exit 1; }
-=======
           # Fetch ALL pages from Credly API (handles pagination)
           PAGE=1
           echo '[]' > /tmp/all_badges.json
@@ -64,37 +61,19 @@ jobs:
           echo "=== Total badges fetched from Credly: $TOTAL ==="
           echo ""
 
->>>>>>> 5ad623e (Fix: Issue with teh Badge count after adding new one and remove the limit of 36)
           python3 << 'EOF'
           import json, sys, re
           from datetime import date
 
-<<<<<<< HEAD
-          with open('/tmp/badges.json', 'r') as f:
-              raw = f.read()
-          try:
-              data = json.loads(raw)
-          except json.JSONDecodeError:
-              print(f"Failed to parse Credly response: {raw[:500]}")
-              sys.exit(1)
-
-          if 'data' not in data:
-              print(f"Unexpected response structure: {list(data.keys())}")
-=======
           with open('/tmp/all_badges.json', 'r') as f:
               all_data = json.load(f)
 
           if not all_data:
               print("ERROR: No badges fetched from Credly. Aborting to prevent data loss.")
->>>>>>> 5ad623e (Fix: Issue with teh Badge count after adding new one and remove the limit of 36)
               sys.exit(1)
 
           today = date.today().isoformat()
 
-<<<<<<< HEAD
-          # Certs display — NO stackable
-          certs_badges = [b for b in data['data']
-=======
           # Safety check: if we got fewer badges than currently in the file, abort
           with open('index.html', 'r') as f:
               html = f.read()
@@ -108,16 +87,11 @@ jobs:
 
           # Certs display — NO stackable
           certs_badges = [b for b in all_data
->>>>>>> 5ad623e (Fix: Issue with teh Badge count after adding new one and remove the limit of 36)
                     if 'Stackable' not in b['badge_template']['name']
                     and (not b.get('expires_at_date') or b['expires_at_date'] >= today)]
 
           # Floating background — ALL badges including stackable
-<<<<<<< HEAD
-          all_badges = [b for b in data['data']
-=======
           all_badges = [b for b in all_data
->>>>>>> 5ad623e (Fix: Issue with teh Badge count after adding new one and remove the limit of 36)
                     if not b.get('expires_at_date') or b['expires_at_date'] >= today]
 
           def get_priority(name):
@@ -227,17 +201,12 @@ jobs:
           with open('index.html', 'w') as f:
               f.write(html)
 
-<<<<<<< HEAD
-          print(f"Certs displayed: {len(entries)}")
-          print(f"Floating background: {len(all_imgs)} (includes stackable)")
-=======
           print(f"✅ Certs displayed: {len(entries)}")
           print(f"✅ Floating background: {len(all_imgs)} (includes stackable)")
           print(f"")
           print(f"Badge list:")
           for _, name, _, _, issued in entries:
               print(f"  • {name} ({issued})")
->>>>>>> 5ad623e (Fix: Issue with teh Badge count after adding new one and remove the limit of 36)
           EOF
 
       - name: Commit and push if changed
