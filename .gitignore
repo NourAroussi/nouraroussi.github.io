@@ -7,3 +7,7 @@ Thumbs.db
 .vscode
 .idea
 .kiro/hooks/track-with-agent.kiro.hook
+<<<<<<< HEAD
+=======
+index.html.backup
+>>>>>>> 5ad623e (Fix: Issue with teh Badge count after adding new one and remove the limit of 36)
