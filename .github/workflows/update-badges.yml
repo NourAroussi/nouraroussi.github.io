@@ -104,9 +104,10 @@ jobs:
                   'CISSP': 1,
                   'Solutions Architect – Professional': 2,
                   'Security – Specialty': 3,
-                  'GCIH': 4,
-                  'SecurityX': 5,
-                  'CySA+': 6, 'PenTest+': 7,
+                  'Advanced Networking': 4,
+                  'GCIH': 5,
+                  'SecurityX': 6,
+                  'CySA+': 7, 'PenTest+': 8,
               }
               for key, val in expert.items():
                   if key in name:
