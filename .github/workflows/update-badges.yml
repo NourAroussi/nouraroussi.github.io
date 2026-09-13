@@ -119,7 +119,7 @@ jobs:
 
               # Associate level (fixed order — new certs append at end of tier)
               associate = {
-                  'Solutions Architect – Associate': 20, 'CloudOps': 21, 'Developer – Associate': 22, 'Machine Learning Engineer': 23
+                  'Solutions Architect – Associate': 20, 'CloudOps': 21, 'Developer – Associate': 22, 'Machine Learning Engineer': 23,
                   'CCNA': 24, 'PCAP': 25,
                   'Cloud+': 27, 'Linux+': 28, 'Server+': 29, 'SecAI+': 30,
                   'GSEC': 31, 'GFACT': 32,
