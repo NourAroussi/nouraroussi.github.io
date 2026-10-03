@@ -103,11 +103,12 @@ jobs:
               expert = {
                   'CISSP': 1,
                   'Solutions Architect – Professional': 2,
-                  'Security – Specialty': 3,
-                  'Advanced Networking': 4,
-                  'GCIH': 5,
-                  'SecurityX': 6,
-                  'CySA+': 7, 'PenTest+': 8,
+                  'DevOps Engineer – Professional':3,
+                  'Security – Specialty': 4,
+                  'Advanced Networking': 5,
+                  'GCIH': 6,
+                  'SecurityX': 7,
+                  'CySA+': 8, 'PenTest+': 9,
               }
               for key, val in expert.items():
                   if key in name:
