@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.credly.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'none'; frame-ancestors 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.credly.com; script-src 'self' 'sha256-YUfpNg9A582PIkTe7lChAINcpW4hUVvMTa7l2UY12N4='; style-src 'self' 'unsafe-inline'; connect-src 'none'; frame-ancestors 'none';">
     <title>Nour Aroussi - Cloud Security Engineer</title>
     <meta name="description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, and PenTest+ certifications. Hands-on AWS security automation, firewall architecture, IDS/IPS, and network defense.">
     <meta name="author" content="Nour Aroussi">
@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Nour Aroussi - Cloud Security Engineer">
     <meta name="twitter:description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, and PenTest+ certifications.">
     <meta name="twitter:image" content="https://nouraroussi.github.io/preview.png">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text x='50' y='50' dy='.35em' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='46' font-weight='700' fill='%23ffffff'>NA</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -64,6 +64,9 @@
         @keyframes float {
             0% { transform: translateY(110vh); }
             100% { transform: translateY(-120px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .floating-badge { animation: none; }
         }
 
         /* Content layer */
@@ -236,8 +239,8 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" aria-label="Toggle dark mode" onclick="document.body.classList.toggle('dark'); localStorage.setItem('theme', document.body.classList.contains('dark')?'dark':'light'); this.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';">🌙 Dark</button>
-    <button class="theme-toggle" aria-label="Toggle floating badges" style="right:auto; left:16px;" onclick="const bg=document.getElementById('floatingBg'); bg.style.display=bg.style.display==='none'?'block':'none'; this.textContent=bg.style.display==='none'?'🎖️ Badges':'🚫 Badges';">🚫 Badges</button>
+    <button id="darkToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙 Dark</button>
+    <button id="badgesToggle" class="theme-toggle" aria-label="Toggle floating badges" style="right:auto; left:16px;">🚫 Badges</button>
 
     <nav style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.9); backdrop-filter:blur(8px); border-bottom:1px solid rgba(99,102,241,0.1); padding:10px 20px; text-align:center; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
         <a href="#skills" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Skills</a>
@@ -271,7 +274,7 @@
                 </a>
             </div>
             <p style="max-width:650px; margin:20px auto 0; line-height:1.7; font-size:0.9rem; color:#475569;">
-                Cloud Security Engineer specializing in AWS threat detection, security automation, and cloud-native defense — backed by a strong foundation in enterprise network security. Holds CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, AWS SAP, SecurityX, PenTest+, and CySA+. Applies that knowledge hands-on through deployable security labs and working portfolios covering AWS GuardDuty automation, Terraform/CDK infrastructure, CIS compliance engines, real-time streaming systems, and container orchestration with k3s. Currently pursuing the SANS Applied Cybersecurity Certificate (GSEC · GCIH · GPCS). Brings 5+ years of enterprise infrastructure and network security engineering at Amazon across hybrid cloud environments.
+                Cloud Security Engineer specializing in AWS threat detection, security automation, and cloud-native defense — backed by a strong foundation in enterprise network security. Holds CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, AWS SAP, SecurityX, PenTest+, and CySA+. Applies that knowledge hands-on through deployable security labs and working portfolios covering AWS GuardDuty automation, Terraform/CDK infrastructure, CIS compliance engines, real-time streaming systems, and container orchestration with k3s. Currently completing the SANS Applied Cybersecurity Certificate (GSEC · GCIH earned, GCIA remaining). Brings 5+ years of enterprise infrastructure and network security engineering at Amazon across hybrid cloud environments.
             </p>
         </div>
     </header>
@@ -293,11 +296,11 @@
 
     <!-- Certifications Section -->
     <section class="projects-section" id="certifications">
-        <h2>Certifications</h2>
-        <div id="certsGrid" style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
+        <h2>Certifications &amp; Learning Achievements</h2>
+        <div id="certsGrid" style="max-width:900px; margin:0 auto;">
         </div>
         <div style="text-align:center; margin-top:16px;">
-            <button id="certsToggle" onclick="toggleCerts()" style="background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); border-radius:20px; padding:8px 20px; cursor:pointer; font-size:0.85rem; color:#4f46e5; transition:all 0.3s;">Show More</button>
+            <button id="certsToggle" style="background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); border-radius:20px; padding:8px 20px; cursor:pointer; font-size:0.85rem; color:#4f46e5; transition:all 0.3s;">Show More</button>
         </div>
     </section>
 
@@ -314,7 +317,7 @@
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Present</div>
                     <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Applied Cybersecurity Certificate</h3>
                     <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">SANS Institute of Technology</div>
-                    <div style="font-size:0.75rem; color:#475569;">SEC401 (GSEC) · SEC504 (GCIH)</div>
+                    <div style="font-size:0.75rem; color:#475569;">SEC401 (GSEC) · SEC504 (GCIH) · SEC503 (GCIA, in progress)</div>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jan 2026</div>
                 </div>
                 <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">Present</div>
@@ -331,7 +334,7 @@
                         <li>Maintain security-relevant operational documentation: network diagrams, access control records, change management logs, and runbooks for the Boston regional office</li>
                         <li>Troubleshoot and harden endpoints across macOS, Windows, and Linux environments — applying security-first diagnostic methodology to reduce attack surface</li>
                     </ul>
-                    <span onclick="toggleJob('job1',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <span class="job-toggle" data-target="job1" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2025</div>
                 </div>
             </div>
@@ -359,7 +362,7 @@
                         <li>Built and secured IT and network infrastructure for new site launches, including initial firewall configuration and network segmentation design</li>
                         <li>Coordinated 24/7 on-call security and network incident coverage, responding to critical outages and threats with rapid escalation</li>
                     </ul>
-                    <span onclick="toggleJob('job2',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <span class="job-toggle" data-target="job2" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Aug 2020</div>
                 </div>
             </div>
@@ -380,7 +383,7 @@
                         <li>Migrated on-premises systems to Azure/G-Suite (VPCs/VNets, VPN), cutting infrastructure costs by 35%; led Windows Server migration for 200 users via change management processes</li>
                         <li>Implemented Barracuda backup with 4-hour RTO; maintained network diagrams and documentation across all projects</li>
                     </ul>
-                    <span onclick="toggleJob('job3',this)" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <span class="job-toggle" data-target="job3" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jun 2019</div>
                 </div>
             </div>
@@ -389,7 +392,7 @@
 
     <!-- Featured Portfolios Section -->
     <section class="projects-section" id="portfolios">
-        <h2>Skills & Portfolio</h2>
+        <h2>Portfolio</h2>
         <p style="text-align:center; color:#64748b; margin-bottom:24px; font-size:0.9rem;">Hands-on projects demonstrating real-world security and systems engineering skills. Every project is deployable with Terraform or AWS CDK.</p>
         <div class="projects-grid" id="portfolioGrid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
         </div>
@@ -399,18 +402,33 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 Nour Aroussi · Built with HTML, CSS & JavaScript</p>
+        <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:12px;">
+            <a href="https://www.linkedin.com/in/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:none;">LinkedIn</a>
+            <a href="https://github.com/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:none;">GitHub</a>
+            <a href="https://www.credly.com/users/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:none;">Credly</a>
+        </div>
+        <p>© 2026 Nour Aroussi · Cloud Security Engineer · Boston, MA</p>
+        <p style="margin-top:6px; font-size:0.7rem; color:#cbd5e1;">Certifications synced weekly from Credly · Built with HTML, CSS &amp; JavaScript</p>
     </footer>
 
-    <button id="topBtn" aria-label="Back to top" onclick="window.scrollTo(0,0)" style="display:none; position:fixed; bottom:20px; right:20px; z-index:100; background:#4f46e5; color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.2);">↑</button>
+    <button id="topBtn" aria-label="Back to top" style="display:none; position:fixed; bottom:20px; right:20px; z-index:100; background:#4f46e5; color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.2);">↑</button>
     <script>
         // Back to top button
         window.addEventListener('scroll', function(){ document.getElementById('topBtn').style.display = window.scrollY > 300 ? 'block' : 'none'; });
+        document.getElementById('topBtn').addEventListener('click', function(){ window.scrollTo(0, 0); });
+
+        // Dark mode toggle
+        document.getElementById('darkToggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            this.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+        });
 
         // Restore dark mode preference
-        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark'); document.querySelector('.theme-toggle').textContent = '☀️ Light'; }
+        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark'); document.getElementById('darkToggle').textContent = '☀️ Light'; }
 
-        // Job details toggle
+        // Job details toggle (wired via class + data-target)
         function toggleJob(id, btn) {
             const el = document.getElementById(id);
             if (el.style.maxHeight === '0px' || el.style.maxHeight === '') {
@@ -421,72 +439,126 @@
                 btn.textContent = 'Show More';
             }
         }
+        document.querySelectorAll('.job-toggle').forEach(function (span) {
+            span.addEventListener('click', function () { toggleJob(this.dataset.target, this); });
+        });
 
         // Certifications - ordered by level (data from Credly API)
         const certs = [
-            { name: "Information Systems Security Professional (CISSP)", img: "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png", url: "https://www.credly.com/badges/2ab67e07-79bb-4320-ba1d-ee1a98d4b901/public_url", date: "2026-04-03" },
-            { name: "Solutions Architect – Professional", img: "https://images.credly.com/images/2d84e428-9078-49b6-a804-13c15383d0de/image.png", url: "https://www.credly.com/badges/ef92291a-6b7d-4a79-995b-723324fe6a78/public_url", date: "2026-07-05" },
-            { name: "DevOps Engineer – Professional", img: "https://images.credly.com/images/bd31ef42-d460-493e-8503-39592aaf0458/image.png", url: "https://www.credly.com/badges/15ad938e-2835-4646-947d-e0920b7e6997/public_url", date: "2026-10-02" },
-            { name: "Security – Specialty", img: "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png", url: "https://www.credly.com/badges/3edcb458-e2a2-455f-8bbc-4939c5875d17/public_url", date: "2026-01-18" },
-            { name: "Advanced Networking – Specialty", img: "https://images.credly.com/images/4d08274f-64c1-495e-986b-3143f51b1371/image.png", url: "https://www.credly.com/badges/6d21c542-67d6-4fde-bdcb-327a78348871/public_url", date: "2026-08-02" },
-            { name: "GIAC Incident Handler (GCIH)", img: "https://images.credly.com/images/c3e2745b-2f30-4e6b-9290-f7557a705181/image.png", url: "https://www.credly.com/badges/ae4575cf-1d83-4051-920d-7dd2e64a23c5/public_url", date: "2026-06-28" },
-            { name: "SecurityX", img: "https://images.credly.com/images/5343b652-c9a0-418e-bfaf-7ed5a2ddd0c4/blob", url: "https://www.credly.com/badges/f48ce6d5-9eba-4573-9ba9-f19247e113f8/public_url", date: "2025-11-29" },
-            { name: "CySA+", img: "https://images.credly.com/images/dcd99b5b-da24-40a6-9364-62126d590c37/blob", url: "https://www.credly.com/badges/b72791fd-eedc-44d3-9cf6-1d706c1a1785/public_url", date: "2024-10-07" },
-            { name: "PenTest+", img: "https://images.credly.com/images/c7ac176b-15a3-4726-827a-e8cee8fe44dc/blob", url: "https://www.credly.com/badges/b7c79cc3-beed-4041-80b9-31cd54c95114/public_url", date: "2024-12-23" },
-            { name: "Solutions Architect – Associate", img: "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png", url: "https://www.credly.com/badges/79437df4-ed9c-4708-b028-7466ced83581/public_url", date: "2025-12-20" },
-            { name: "CloudOps Engineer – Associate", img: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob", url: "https://www.credly.com/badges/9d6b694e-01b8-47db-895c-82cb6fef44a0/public_url", date: "2026-01-11" },
-            { name: "Developer – Associate", img: "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png", url: "https://www.credly.com/badges/3f8fdb6c-5127-42b8-b632-2b9b7b71fd82/public_url", date: "2026-01-25" },
-            { name: "Machine Learning Engineer – Associate", img: "https://images.credly.com/images/1a634b4e-3d6b-4a74-b118-c0dcb429e8d2/image.png", url: "https://www.credly.com/badges/5d371d54-c3ad-497c-8418-1ccf914f5f73/public_url", date: "2026-09-07" },
-            { name: "CCNA", img: "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png", url: "https://www.credly.com/badges/6bf64932-3da4-453e-b1bc-be5297794f4a/public_url", date: "2026-01-31" },
-            { name: "Fortinet Associate Cybersecurity", img: "https://images.credly.com/images/20082fc1-94af-4773-9df0-28856b566748/image.png", url: "https://www.credly.com/badges/bd2f607f-7b40-4eaa-a088-15aa7cda35e3/public_url", date: "2026-06-26" },
-            { name: "[PCAP-31-03] PCAP™ – Associate Python Programmer", img: "https://images.credly.com/images/4e248e82-9e87-4a63-9263-250fafe5fb1f/image.png", url: "https://www.credly.com/badges/722bae21-f48e-4b62-88aa-23fc8a093208/public_url", date: "2026-02-15" },
-            { name: "Cloud+", img: "https://images.credly.com/images/b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe/blob", url: "https://www.credly.com/badges/19c4b78c-7950-4d43-9d0f-d84c5113aa14/public_url", date: "2026-01-03" },
-            { name: "Linux+", img: "https://images.credly.com/images/c8ba8fa6-ab8b-4df7-879f-4ae7b98b2765/blob", url: "https://www.credly.com/badges/3659c7e8-d337-4be8-a06e-4899638ebf43/public_url", date: "2026-01-02" },
-            { name: "Server+", img: "https://images.credly.com/images/07378420-4407-4f09-a4d7-9301d87dec34/blob", url: "https://www.credly.com/badges/55b7f064-d5a7-45ef-9904-59c3cfd9dada/public_url", date: "2025-12-21" },
-            { name: "SecAI+ Certification", img: "https://images.credly.com/images/7c798dfc-1610-42c6-8729-2b735f88fab0/blob", url: "https://www.credly.com/badges/34e1fe77-fc8a-4462-a0c2-03ba4fa8822c/public_url", date: "2025-10-04" },
-            { name: "GIAC Security Essentials Certification (GSEC)", img: "https://images.credly.com/images/8e6bde54-8a33-4ec0-9d70-90fcde581bcf/image.png", url: "https://www.credly.com/badges/64bdc6e8-0694-4852-8732-6fc89edf029a/public_url", date: "2026-04-24" },
-            { name: "GIAC Foundational Cybersecurity Technologies (GFACT)", img: "https://images.credly.com/images/2d9b3293-9295-4ac3-a326-1bb7013225a4/image.png", url: "https://www.credly.com/badges/773fa553-b58e-408a-98b4-d7cbb6a6048a/public_url", date: "2026-02-20" },
-            { name: "AI Business Strategist", img: "https://images.credly.com/images/ed8c832e-b100-4ab8-8864-2fddb2e87b04/blob", url: "https://www.credly.com/badges/57437f7a-12bc-4990-ba03-e34dc653f20b/public_url", date: "2026-10-04" },
-            { name: "AI Business Strategist Early Adopter", img: "https://images.credly.com/images/b7716dcd-7fd1-4cb2-bcc8-23685f1bcdd8/blob", url: "https://www.credly.com/badges/bce14941-c6af-4a5f-86c0-1b3d650ac49c/public_url", date: "2026-10-04" },
-            { name: "Data Streaming Demonstrated", img: "https://images.credly.com/images/6c76e6fe-d95c-46b1-a824-1effb29d2ae9/blob", url: "https://www.credly.com/badges/9648033d-1dca-41b7-b43f-50b0d86fa15a/public_url", date: "2026-09-21" },
-            { name: "MLOps Demonstrated", img: "https://images.credly.com/images/60d4b86c-cbec-4d31-aeb1-5e86864305a1/blob", url: "https://www.credly.com/badges/d14f68f1-6731-4892-a006-5af8eea5e589/public_url", date: "2026-09-14" },
-            { name: "Agentic AI Demonstrated", img: "https://images.credly.com/images/6f40bf38-1725-40d8-99a2-f6bb1bafec0e/blob", url: "https://www.credly.com/badges/06638b52-e852-4d3d-9759-be9e9adc38e3/public_url", date: "2026-09-12" },
-            { name: "Data Visualization Demonstrated", img: "https://images.credly.com/images/3e0dcc2b-b0d3-4f20-959a-5c16373d8ac3/blob", url: "https://www.credly.com/badges/46402139-62d4-4ea0-865f-39ee6cb068d6/public_url", date: "2026-09-12" },
-            { name: "Data Lakehouse Demonstrated", img: "https://images.credly.com/images/505b2a51-5e9c-4587-a632-cfa238fc0db3/blob", url: "https://www.credly.com/badges/8853c600-7a29-43f2-b6f9-c7928bb2cb08/public_url", date: "2026-09-09" },
-            { name: "Application Networking Demonstrated", img: "https://images.credly.com/images/ed8cf03b-6269-4265-a65b-68e67e49ce6b/blob", url: "https://www.credly.com/badges/2feee6ff-1804-40f1-8b5f-1350cee2c8e4/public_url", date: "2026-08-10" },
-            { name: "Incident Response Demonstrated", img: "https://images.credly.com/images/8dd6f516-0dd3-4b5e-aacf-8e86e737a95d/blob", url: "https://www.credly.com/badges/84b1991f-3a0f-40fb-82ea-594f3f394d26/public_url", date: "2026-08-03" },
-            { name: "Serverless Demonstrated", img: "https://images.credly.com/images/b3885091-25bc-42d0-8989-34cca82f3056/blob", url: "https://www.credly.com/badges/4f022a86-e4e4-4402-87c8-562d8e270196/public_url", date: "2026-07-30" },
-            { name: "Cloud Practitioner", img: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png", url: "https://www.credly.com/badges/75b66e6c-38d3-47cc-9cf9-b132fa133203/public_url", date: "2025-03-16" },
-            { name: "AI Practitioner", img: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png", url: "https://www.credly.com/badges/8343b27f-8a84-440c-abc5-01810f9a3923/public_url", date: "2025-04-19" },
-            { name: "Security+", img: "https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob", url: "https://www.credly.com/badges/943a6ca8-7773-4d2e-a6d4-6d37157bf78e/public_url", date: "2025-12-07" },
-            { name: "Network+", img: "https://images.credly.com/images/c70ba73e-3c8a-46fa-9d60-4a9af94ad662/blob", url: "https://www.credly.com/badges/261de691-5759-4854-80e7-6e630617c1af/public_url", date: "2025-12-13" },
-            { name: "A+", img: "https://images.credly.com/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob", url: "https://www.credly.com/badges/e9914f41-0890-4474-8598-0064f5c0a29a/public_url", date: "2025-12-05" },
-            { name: "Fortinet Fundamentals Cybersecurity", img: "https://images.credly.com/images/22a0ece5-ff05-4594-8320-25e55e9ae203/image.png", url: "https://www.credly.com/badges/db47fa0b-218f-488c-a514-c2390160588c/public_url", date: "2025-12-13" },
-            { name: "in Cybersecurity (CC)", img: "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png", url: "https://www.credly.com/badges/a2364193-22e1-483c-8d34-6a942282a8c0/public_url", date: "2024-06-08" },
-            { name: "Cloud Quest: Machine Learning", img: "https://images.credly.com/images/0bbd6fa0-937a-4933-9581-d25dd860bb33/blob", url: "https://www.credly.com/badges/76a011af-cebd-4374-b038-e74bc5dc5add/public_url", date: "2026-07-29" },
-            { name: "Cloud Quest: Data Analytics", img: "https://images.credly.com/images/530be67d-1ce0-46d4-8a36-3f277d5687bc/blob", url: "https://www.credly.com/badges/53ce0c69-5f7f-4810-826c-18e14e57e569/public_url", date: "2026-07-19" },
-            { name: "Cloud Quest: Serverless Developer", img: "https://images.credly.com/images/9246c572-2b5e-4b3a-9fae-e87b3c1bf681/blob", url: "https://www.credly.com/badges/f7099485-d1d5-43d4-8bd1-bd282e1668a1/public_url", date: "2026-07-17" },
-            { name: "Cloud Quest: Generative AI Practitioner", img: "https://images.credly.com/images/15fa08e6-ca73-4fa3-94ed-c36f7f157313/blob", url: "https://www.credly.com/badges/93bd3659-d1af-4bd8-863d-f6b57969a120/public_url", date: "2026-06-26" },
-            { name: "Cloud Quest: Cloud Practitioner", img: "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob", url: "https://www.credly.com/badges/9c296a50-d5e1-4cf1-888b-154a310e0086/public_url", date: "2026-06-18" },
-            { name: "Industry Quest: Healthcare", img: "https://images.credly.com/images/aed5aea8-8054-431f-aa1c-6b33b256d2ca/blob", url: "https://www.credly.com/badges/d1a9a6e0-db31-4bde-8b87-0fd6f4f0b76d/public_url", date: "2026-05-28" },
-            { name: "Cloud Quest: Solutions Architect", img: "https://images.credly.com/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob", url: "https://www.credly.com/badges/dc13a382-0332-4aec-96e3-cacbf895aa14/public_url", date: "2026-04-28" },
-            { name: "Cloud Quest: Networking", img: "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob", url: "https://www.credly.com/badges/e96555dd-658c-4b58-acc5-6d4f2685d42a/public_url", date: "2026-04-26" },
-            { name: "Cloud Quest: Generative AI Architect", img: "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob", url: "https://www.credly.com/badges/4b534260-7275-4e75-b497-4ba4ced927cd/public_url", date: "2026-04-21" },
-            { name: "Cloud Quest: Security", img: "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob", url: "https://www.credly.com/badges/9f825acd-ff79-48f5-a476-c4b0feb6d997/public_url", date: "2026-04-07" },
-            { name: "Well-Architected Proficient", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url", date: "2026-03-05" },
-            { name: "Verified International Academic Qualifications", img: "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png", url: "https://www.credly.com/badges/37386789-593c-479d-9640-19b8314daed7/public_url", date: "2024-01-03" },
+            { name: "Information Systems Security Professional (CISSP)", img: "https://images.credly.com/images/de7e10b8-25a9-420b-834c-1e9cffd3b2fa/image.png", url: "https://www.credly.com/badges/2ab67e07-79bb-4320-ba1d-ee1a98d4b901/public_url", date: "2026-04-03", group: "cert" },
+            { name: "Solutions Architect – Professional", img: "https://images.credly.com/images/2d84e428-9078-49b6-a804-13c15383d0de/image.png", url: "https://www.credly.com/badges/ef92291a-6b7d-4a79-995b-723324fe6a78/public_url", date: "2026-07-05", group: "cert" },
+            { name: "DevOps Engineer – Professional", img: "https://images.credly.com/images/bd31ef42-d460-493e-8503-39592aaf0458/image.png", url: "https://www.credly.com/badges/15ad938e-2835-4646-947d-e0920b7e6997/public_url", date: "2026-10-02", group: "cert" },
+            { name: "Security – Specialty", img: "https://images.credly.com/images/53acdae5-d69f-4dda-b650-d02ed7a50dd7/image.png", url: "https://www.credly.com/badges/3edcb458-e2a2-455f-8bbc-4939c5875d17/public_url", date: "2026-01-18", group: "cert" },
+            { name: "Advanced Networking – Specialty", img: "https://images.credly.com/images/4d08274f-64c1-495e-986b-3143f51b1371/image.png", url: "https://www.credly.com/badges/6d21c542-67d6-4fde-bdcb-327a78348871/public_url", date: "2026-08-02", group: "cert" },
+            { name: "GIAC Incident Handler (GCIH)", img: "https://images.credly.com/images/c3e2745b-2f30-4e6b-9290-f7557a705181/image.png", url: "https://www.credly.com/badges/ae4575cf-1d83-4051-920d-7dd2e64a23c5/public_url", date: "2026-06-28", group: "cert" },
+            { name: "SecurityX", img: "https://images.credly.com/images/5343b652-c9a0-418e-bfaf-7ed5a2ddd0c4/blob", url: "https://www.credly.com/badges/f48ce6d5-9eba-4573-9ba9-f19247e113f8/public_url", date: "2025-11-29", group: "cert" },
+            { name: "CySA+", img: "https://images.credly.com/images/dcd99b5b-da24-40a6-9364-62126d590c37/blob", url: "https://www.credly.com/badges/b72791fd-eedc-44d3-9cf6-1d706c1a1785/public_url", date: "2024-10-07", group: "cert" },
+            { name: "PenTest+", img: "https://images.credly.com/images/c7ac176b-15a3-4726-827a-e8cee8fe44dc/blob", url: "https://www.credly.com/badges/b7c79cc3-beed-4041-80b9-31cd54c95114/public_url", date: "2024-12-23", group: "cert" },
+            { name: "Solutions Architect – Associate", img: "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png", url: "https://www.credly.com/badges/79437df4-ed9c-4708-b028-7466ced83581/public_url", date: "2025-12-20", group: "cert" },
+            { name: "CloudOps Engineer – Associate", img: "https://images.credly.com/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob", url: "https://www.credly.com/badges/9d6b694e-01b8-47db-895c-82cb6fef44a0/public_url", date: "2026-01-11", group: "cert" },
+            { name: "Developer – Associate", img: "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png", url: "https://www.credly.com/badges/3f8fdb6c-5127-42b8-b632-2b9b7b71fd82/public_url", date: "2026-01-25", group: "cert" },
+            { name: "Machine Learning Engineer – Associate", img: "https://images.credly.com/images/1a634b4e-3d6b-4a74-b118-c0dcb429e8d2/image.png", url: "https://www.credly.com/badges/5d371d54-c3ad-497c-8418-1ccf914f5f73/public_url", date: "2026-09-07", group: "cert" },
+            { name: "CCNA", img: "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png", url: "https://www.credly.com/badges/6bf64932-3da4-453e-b1bc-be5297794f4a/public_url", date: "2026-01-31", group: "cert" },
+            { name: "Fortinet Associate Cybersecurity", img: "https://images.credly.com/images/20082fc1-94af-4773-9df0-28856b566748/image.png", url: "https://www.credly.com/badges/bd2f607f-7b40-4eaa-a088-15aa7cda35e3/public_url", date: "2026-06-26", group: "cert" },
+            { name: "[PCAP-31-03] PCAP™ – Associate Python Programmer", img: "https://images.credly.com/images/4e248e82-9e87-4a63-9263-250fafe5fb1f/image.png", url: "https://www.credly.com/badges/722bae21-f48e-4b62-88aa-23fc8a093208/public_url", date: "2026-02-15", group: "cert" },
+            { name: "Cloud+", img: "https://images.credly.com/images/b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe/blob", url: "https://www.credly.com/badges/19c4b78c-7950-4d43-9d0f-d84c5113aa14/public_url", date: "2026-01-03", group: "cert" },
+            { name: "Linux+", img: "https://images.credly.com/images/c8ba8fa6-ab8b-4df7-879f-4ae7b98b2765/blob", url: "https://www.credly.com/badges/3659c7e8-d337-4be8-a06e-4899638ebf43/public_url", date: "2026-01-02", group: "cert" },
+            { name: "Server+", img: "https://images.credly.com/images/07378420-4407-4f09-a4d7-9301d87dec34/blob", url: "https://www.credly.com/badges/55b7f064-d5a7-45ef-9904-59c3cfd9dada/public_url", date: "2025-12-21", group: "cert" },
+            { name: "SecAI+ Certification", img: "https://images.credly.com/images/7c798dfc-1610-42c6-8729-2b735f88fab0/blob", url: "https://www.credly.com/badges/34e1fe77-fc8a-4462-a0c2-03ba4fa8822c/public_url", date: "2025-10-04", group: "cert" },
+            { name: "GIAC Security Essentials Certification (GSEC)", img: "https://images.credly.com/images/8e6bde54-8a33-4ec0-9d70-90fcde581bcf/image.png", url: "https://www.credly.com/badges/64bdc6e8-0694-4852-8732-6fc89edf029a/public_url", date: "2026-04-24", group: "cert" },
+            { name: "GIAC Foundational Cybersecurity Technologies (GFACT)", img: "https://images.credly.com/images/2d9b3293-9295-4ac3-a326-1bb7013225a4/image.png", url: "https://www.credly.com/badges/773fa553-b58e-408a-98b4-d7cbb6a6048a/public_url", date: "2026-02-20", group: "cert" },
+            { name: "AI Business Strategist", img: "https://images.credly.com/images/ed8c832e-b100-4ab8-8864-2fddb2e87b04/blob", url: "https://www.credly.com/badges/57437f7a-12bc-4990-ba03-e34dc653f20b/public_url", date: "2026-10-04", group: "cert" },
+            { name: "AI Business Strategist Early Adopter", img: "https://images.credly.com/images/b7716dcd-7fd1-4cb2-bcc8-23685f1bcdd8/blob", url: "https://www.credly.com/badges/bce14941-c6af-4a5f-86c0-1b3d650ac49c/public_url", date: "2026-10-04", group: "learning" },
+            { name: "Data Streaming Demonstrated", img: "https://images.credly.com/images/6c76e6fe-d95c-46b1-a824-1effb29d2ae9/blob", url: "https://www.credly.com/badges/9648033d-1dca-41b7-b43f-50b0d86fa15a/public_url", date: "2026-09-21", group: "learning" },
+            { name: "MLOps Demonstrated", img: "https://images.credly.com/images/60d4b86c-cbec-4d31-aeb1-5e86864305a1/blob", url: "https://www.credly.com/badges/d14f68f1-6731-4892-a006-5af8eea5e589/public_url", date: "2026-09-14", group: "learning" },
+            { name: "Agentic AI Demonstrated", img: "https://images.credly.com/images/6f40bf38-1725-40d8-99a2-f6bb1bafec0e/blob", url: "https://www.credly.com/badges/06638b52-e852-4d3d-9759-be9e9adc38e3/public_url", date: "2026-09-12", group: "learning" },
+            { name: "Data Visualization Demonstrated", img: "https://images.credly.com/images/3e0dcc2b-b0d3-4f20-959a-5c16373d8ac3/blob", url: "https://www.credly.com/badges/46402139-62d4-4ea0-865f-39ee6cb068d6/public_url", date: "2026-09-12", group: "learning" },
+            { name: "Data Lakehouse Demonstrated", img: "https://images.credly.com/images/505b2a51-5e9c-4587-a632-cfa238fc0db3/blob", url: "https://www.credly.com/badges/8853c600-7a29-43f2-b6f9-c7928bb2cb08/public_url", date: "2026-09-09", group: "learning" },
+            { name: "Application Networking Demonstrated", img: "https://images.credly.com/images/ed8cf03b-6269-4265-a65b-68e67e49ce6b/blob", url: "https://www.credly.com/badges/2feee6ff-1804-40f1-8b5f-1350cee2c8e4/public_url", date: "2026-08-10", group: "learning" },
+            { name: "Incident Response Demonstrated", img: "https://images.credly.com/images/8dd6f516-0dd3-4b5e-aacf-8e86e737a95d/blob", url: "https://www.credly.com/badges/84b1991f-3a0f-40fb-82ea-594f3f394d26/public_url", date: "2026-08-03", group: "learning" },
+            { name: "Serverless Demonstrated", img: "https://images.credly.com/images/b3885091-25bc-42d0-8989-34cca82f3056/blob", url: "https://www.credly.com/badges/4f022a86-e4e4-4402-87c8-562d8e270196/public_url", date: "2026-07-30", group: "learning" },
+            { name: "Cloud Practitioner", img: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png", url: "https://www.credly.com/badges/75b66e6c-38d3-47cc-9cf9-b132fa133203/public_url", date: "2025-03-16", group: "cert" },
+            { name: "AI Practitioner", img: "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png", url: "https://www.credly.com/badges/8343b27f-8a84-440c-abc5-01810f9a3923/public_url", date: "2025-04-19", group: "cert" },
+            { name: "Security+", img: "https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob", url: "https://www.credly.com/badges/943a6ca8-7773-4d2e-a6d4-6d37157bf78e/public_url", date: "2025-12-07", group: "cert" },
+            { name: "Network+", img: "https://images.credly.com/images/c70ba73e-3c8a-46fa-9d60-4a9af94ad662/blob", url: "https://www.credly.com/badges/261de691-5759-4854-80e7-6e630617c1af/public_url", date: "2025-12-13", group: "cert" },
+            { name: "A+", img: "https://images.credly.com/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob", url: "https://www.credly.com/badges/e9914f41-0890-4474-8598-0064f5c0a29a/public_url", date: "2025-12-05", group: "cert" },
+            { name: "Fortinet Fundamentals Cybersecurity", img: "https://images.credly.com/images/22a0ece5-ff05-4594-8320-25e55e9ae203/image.png", url: "https://www.credly.com/badges/db47fa0b-218f-488c-a514-c2390160588c/public_url", date: "2025-12-13", group: "cert" },
+            { name: "in Cybersecurity (CC)", img: "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png", url: "https://www.credly.com/badges/a2364193-22e1-483c-8d34-6a942282a8c0/public_url", date: "2024-06-08", group: "cert" },
+            { name: "Cloud Quest: Machine Learning", img: "https://images.credly.com/images/0bbd6fa0-937a-4933-9581-d25dd860bb33/blob", url: "https://www.credly.com/badges/76a011af-cebd-4374-b038-e74bc5dc5add/public_url", date: "2026-07-29", group: "learning" },
+            { name: "Cloud Quest: Data Analytics", img: "https://images.credly.com/images/530be67d-1ce0-46d4-8a36-3f277d5687bc/blob", url: "https://www.credly.com/badges/53ce0c69-5f7f-4810-826c-18e14e57e569/public_url", date: "2026-07-19", group: "learning" },
+            { name: "Cloud Quest: Serverless Developer", img: "https://images.credly.com/images/9246c572-2b5e-4b3a-9fae-e87b3c1bf681/blob", url: "https://www.credly.com/badges/f7099485-d1d5-43d4-8bd1-bd282e1668a1/public_url", date: "2026-07-17", group: "learning" },
+            { name: "Cloud Quest: Generative AI Practitioner", img: "https://images.credly.com/images/15fa08e6-ca73-4fa3-94ed-c36f7f157313/blob", url: "https://www.credly.com/badges/93bd3659-d1af-4bd8-863d-f6b57969a120/public_url", date: "2026-06-26", group: "learning" },
+            { name: "Cloud Quest: Cloud Practitioner", img: "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob", url: "https://www.credly.com/badges/9c296a50-d5e1-4cf1-888b-154a310e0086/public_url", date: "2026-06-18", group: "learning" },
+            { name: "Industry Quest: Healthcare", img: "https://images.credly.com/images/aed5aea8-8054-431f-aa1c-6b33b256d2ca/blob", url: "https://www.credly.com/badges/d1a9a6e0-db31-4bde-8b87-0fd6f4f0b76d/public_url", date: "2026-05-28", group: "learning" },
+            { name: "Cloud Quest: Solutions Architect", img: "https://images.credly.com/images/320bfb8f-e722-41b9-a70a-c3fb07402981/blob", url: "https://www.credly.com/badges/dc13a382-0332-4aec-96e3-cacbf895aa14/public_url", date: "2026-04-28", group: "learning" },
+            { name: "Cloud Quest: Networking", img: "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob", url: "https://www.credly.com/badges/e96555dd-658c-4b58-acc5-6d4f2685d42a/public_url", date: "2026-04-26", group: "learning" },
+            { name: "Cloud Quest: Generative AI Architect", img: "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob", url: "https://www.credly.com/badges/4b534260-7275-4e75-b497-4ba4ced927cd/public_url", date: "2026-04-21", group: "learning" },
+            { name: "Cloud Quest: Security", img: "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob", url: "https://www.credly.com/badges/9f825acd-ff79-48f5-a476-c4b0feb6d997/public_url", date: "2026-04-07", group: "learning" },
+            { name: "Well-Architected Proficient", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url", date: "2026-03-05", group: "learning" },
+            { name: "Verified International Academic Qualifications", img: "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png", url: "https://www.credly.com/badges/37386789-593c-479d-9640-19b8314daed7/public_url", date: "2024-01-03", group: "learning" },
         ];
 
         let certsExpanded = false;
+
+        function makeCertTile(c) {
+            const a = document.createElement('a');
+            a.href = c.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.style.cssText = 'text-align:center; text-decoration:none; color:inherit;';
+
+            const img = document.createElement('img');
+            img.src = c.img;
+            img.alt = '';              // decorative: name shown as caption below
+            img.loading = 'lazy';
+            img.width = 80;
+            img.height = 80;
+            img.style.cssText = 'width:80px; height:80px; border-radius:8px; transition:transform 0.3s;';
+            img.onmouseover = () => { img.style.transform = 'scale(1.1)'; };
+            img.onmouseout = () => { img.style.transform = 'scale(1)'; };
+
+            const label = document.createElement('div');
+            label.style.cssText = 'font-size:0.7rem; margin-top:4px; max-width:90px; color:#64748b;';
+            label.textContent = c.name;   // safe: no HTML injection
+
+            a.append(img, label);
+            return a;
+        }
+
+        function makeCertRow(items) {
+            const row = document.createElement('div');
+            row.style.cssText = 'display:flex; flex-wrap:wrap; justify-content:center; gap:16px;';
+            row.append(...items.map(makeCertTile));
+            return row;
+        }
+
+        function makeGroupHeading(text) {
+            const h = document.createElement('h3');
+            h.textContent = text;
+            h.style.cssText = 'width:100%; text-align:center; font-size:1.05rem; color:#4f46e5; margin:24px 0 12px;';
+            return h;
+        }
+
         function renderCerts() {
             const grid = document.getElementById('certsGrid');
-            const visible = certsExpanded ? certs : certs.slice(0, 8);
-            grid.innerHTML = visible.map(c => `
-                <a href="${c.url}" target="_blank" rel="noopener noreferrer" style="text-align:center; text-decoration:none; color:inherit;">
-                    <img src="${c.img}" alt="${c.name}" loading="lazy" style="width:80px; height:80px; border-radius:8px; transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="font-size:0.7rem; margin-top:4px; max-width:90px; color:#64748b;">${c.name}</div>
-                </a>
-            `).join('');
+
+            if (!certsExpanded) {
+                // Collapsed: flat top 8, exactly as before
+                grid.replaceChildren(makeCertRow(certs.slice(0, 8)));
+            } else {
+                // Expanded: two labeled groups — Certifications, then Learning Achievements
+                const realCerts = certs.filter(c => c.group !== 'learning');
+                const learning = certs.filter(c => c.group === 'learning');
+                const children = [];
+                if (realCerts.length) {
+                    children.push(makeGroupHeading('Certifications'), makeCertRow(realCerts));
+                }
+                if (learning.length) {
+                    children.push(makeGroupHeading('Learning Achievements'), makeCertRow(learning));
+                }
+                grid.replaceChildren(...children);
+            }
+
             const btn = document.getElementById('certsToggle');
             btn.textContent = certsExpanded ? 'Show Less' : `Show More (${certs.length} total)`;
         }
@@ -494,6 +566,7 @@
             certsExpanded = !certsExpanded;
             renderCerts();
         }
+        document.getElementById('certsToggle').addEventListener('click', toggleCerts);
         renderCerts();
 
         // Featured Portfolios - curated skills showcase
@@ -544,7 +617,12 @@
 
                 const header = document.createElement('div');
                 header.className = 'portfolio-header';
-                header.innerHTML = `<span class="portfolio-icon">${p.icon}</span><h3>${p.name}</h3>`;
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'portfolio-icon';
+                iconSpan.textContent = p.icon;
+                const titleH3 = document.createElement('h3');
+                titleH3.textContent = p.name;
+                header.append(iconSpan, titleH3);
 
                 const desc = document.createElement('p');
                 desc.className = 'portfolio-desc';
@@ -561,7 +639,12 @@
 
                 const meta = document.createElement('div');
                 meta.className = 'portfolio-meta';
-                meta.innerHTML = `<span>📁 ${p.projects} projects</span><span style="color:#4f46e5;">View on GitHub →</span>`;
+                const projSpan = document.createElement('span');
+                projSpan.textContent = `📁 ${p.projects} projects`;
+                const viewSpan = document.createElement('span');
+                viewSpan.style.color = '#4f46e5';
+                viewSpan.textContent = 'View on GitHub →';
+                meta.append(projSpan, viewSpan);
 
                 card.appendChild(header);
                 card.appendChild(desc);
@@ -656,6 +739,26 @@
             img.style.animationDelay = (-(row * 8) - (col * 1.5)) + 's';
             bg.appendChild(img);
         }
+
+        // Floating badges toggle — persisted in localStorage, like dark mode
+        function setFloatingBadges(on) {
+            const el = document.getElementById('floatingBg');
+            const btn = document.querySelector('[aria-label="Toggle floating badges"]');
+            el.style.display = on ? 'block' : 'none';
+            if (btn) btn.textContent = on ? '🚫 Badges' : '🎖️ Badges';
+            localStorage.setItem('floatingBadges', on ? 'on' : 'off');
+        }
+        function toggleFloatingBadges() {
+            setFloatingBadges(document.getElementById('floatingBg').style.display === 'none');
+        }
+        document.getElementById('badgesToggle').addEventListener('click', toggleFloatingBadges);
+        // Apply saved preference on load. Default OFF when the user prefers reduced motion.
+        (function () {
+            const saved = localStorage.getItem('floatingBadges');
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const on = saved !== null ? saved === 'on' : !prefersReduced;
+            setFloatingBadges(on);
+        })();
     </script>
 </body>
 </html>

@@ -151,6 +151,16 @@ jobs:
               # Unknown new certs → end of associate tier (won't displace existing order)
               return 35
 
+          # Classify each badge: "learning" (Cloud Quest, skill-builder "Demonstrated",
+          # AI Business Strategist, Well-Architected, Academic) vs "cert" (proctored exams)
+          def get_group(name):
+              if ('Quest' in name or 'Demonstrated' in name
+                      or 'Early Adopter' in name
+                      or 'Well-Architected' in name
+                      or 'Academic' in name or 'Qualifications' in name):
+                  return 'learning'
+              return 'cert'
+
           # Build sorted cert entries (no stackable)
           entries = []
           for b in certs_badges:
@@ -159,7 +169,7 @@ jobs:
               url = f"https://www.credly.com/badges/{b['id']}/public_url"
               issued = b.get('issued_at_date', '')
               short = name.replace(' Stackable Certification', '').replace(' ce Certification', '').replace(' - Training Badge', '').replace('Certified ', '').replace('CompTIA ', '').replace('AWS ', '')
-              entries.append((get_priority(name), short, img, url, issued))
+              entries.append((get_priority(name), short, img, url, issued, get_group(name)))
 
           entries.sort(key=lambda x: x[0])
 
@@ -168,8 +178,8 @@ jobs:
 
           # Generate JS array for certs
           js_lines = []
-          for _, name, img, url, issued in entries:
-              js_lines.append(f'            {{ name: "{name}", img: "{img}", url: "{url}", date: "{issued}" }},')
+          for _, name, img, url, issued, group in entries:
+              js_lines.append(f'            {{ name: "{name}", img: "{img}", url: "{url}", date: "{issued}", group: "{group}" }},')
           js_certs = '\n'.join(js_lines)
 
           # Generate floating badges array (all badges)
@@ -200,6 +210,29 @@ jobs:
           # Ensure initial certs display shows 8
           html = re.sub(r'certs\.slice\(0,\s*\d+\)', 'certs.slice(0, 8)', html)
 
+          # Recompute the CSP script hash — the inline <script> changed above, so the
+          # pinned 'sha256-...' in script-src must be regenerated or the browser will
+          # refuse to run the script and the whole page goes inert.
+          import hashlib, base64
+          script_match = re.search(r'<script>(.*?)</script>', html, re.DOTALL)
+          if script_match:
+              script_content = script_match.group(1)
+              new_hash = base64.b64encode(hashlib.sha256(script_content.encode('utf-8')).digest()).decode('ascii')
+              new_html, n = re.subn(
+                  r"script-src 'self' 'sha256-[A-Za-z0-9+/=]+'",
+                  f"script-src 'self' 'sha256-{new_hash}'",
+                  html
+              )
+              if n == 1:
+                  html = new_html
+                  print(f"✅ CSP script hash updated: sha256-{new_hash}")
+              else:
+                  print(f"⚠️ Expected exactly 1 CSP script-src hash to update, found {n}. Aborting to avoid a broken CSP.")
+                  sys.exit(1)
+          else:
+              print("⚠️ No inline <script> found to hash. Aborting.")
+              sys.exit(1)
+
           with open('index.html', 'w') as f:
               f.write(html)
 
@@ -207,7 +240,7 @@ jobs:
           print(f"✅ Floating background: {len(all_imgs)} (includes stackable)")
           print(f"")
           print(f"Badge list:")
-          for _, name, _, _, issued in entries:
+          for _, name, _, _, issued, group in entries:
               print(f"  • {name} ({issued})")
           EOF
 
