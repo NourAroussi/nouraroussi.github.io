@@ -144,6 +144,8 @@ jobs:
 
               if 'Cybersecurity (CC)' in name:
                   return 50
+              if 'Early Adopter' in name:
+                  return 76
               if 'Well-Architected' in name:
                   return 75
               if 'Academic' in name or 'Qualifications' in name:
@@ -154,7 +156,7 @@ jobs:
           # Classify each badge: "learning" (Cloud Quest, skill-builder "Demonstrated",
           # AI Business Strategist, Well-Architected, Academic) vs "cert" (proctored exams)
           def get_group(name):
-              if ('Quest' in name or 'Demonstrated' in name
+              if ('Quest' in name or 'Demonstrated' in name or 'SimuLearn' in name
                       or 'Early Adopter' in name
                       or 'Well-Architected' in name
                       or 'Academic' in name or 'Qualifications' in name):
