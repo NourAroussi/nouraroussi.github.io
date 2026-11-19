@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.credly.com; script-src 'self' 'sha256-JPcy4I26vvfo8ITua01fXtRGl4gDp/Sc2OSu43mCINk='; style-src 'self' 'unsafe-inline'; connect-src 'none'; frame-ancestors 'none';">
-    <title>Nour Aroussi - Cloud Security Engineer</title>
-    <meta name="description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, and PenTest+ certifications. Hands-on AWS security automation, firewall architecture, IDS/IPS, and network defense.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.credly.com; script-src 'self' 'sha256-N2yCeIefh3LoliF3XLBRTui5L1NYZkVqi9NvDqWNQnM='; style-src 'self' 'unsafe-inline'; connect-src 'none'; frame-ancestors 'none';">
+    <title>Nour Aroussi - Cloud Technical Account Manager II</title>
+    <meta name="description" content="Cloud Technical Account Manager II at AWS Enterprise Support. CISSP, CCNA, GSEC, GCIH and AWS Solutions Architect Professional. Secure cloud and network engineering.">
     <meta name="author" content="Nour Aroussi">
-    <meta property="og:title" content="Nour Aroussi - Cloud Security Engineer">
-    <meta property="og:description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, AWS Security Specialty certifications. AWS threat detection, security automation, firewall architecture, and network defense engineering.">
+    <meta property="og:title" content="Nour Aroussi - Cloud Technical Account Manager II">
+    <meta property="og:description" content="Cloud Technical Account Manager II at AWS Enterprise Support. CISSP, CCNA, GSEC, GCIH and AWS Solutions Architect Professional.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nouraroussi.github.io">
     <meta property="og:image" content="https://nouraroussi.github.io/preview.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nour Aroussi - Cloud Security Engineer">
-    <meta name="twitter:description" content="Cloud Security Engineer with CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, and PenTest+ certifications.">
+    <meta name="twitter:title" content="Nour Aroussi - Cloud Technical Account Manager II">
+    <meta name="twitter:description" content="Cloud Technical Account Manager II at AWS Enterprise Support. CISSP, CCNA, GSEC, GCIH and AWS Solutions Architect Professional.">
     <meta name="twitter:image" content="https://nouraroussi.github.io/preview.png">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text x='50' y='50' dy='.35em' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='46' font-weight='700' fill='%23ffffff'>NA</text></svg>">
     <style>
@@ -212,6 +212,42 @@
             justify-content: space-between;
             align-items: center;
         }
+        /* Experience & Education timeline (education sits left and spans the jobs it overlaps) */
+        .tl-grid { max-width: 900px; margin: 0 auto; position: relative; display: grid;
+                   grid-template-columns: 1fr 1fr; column-gap: 48px;
+                   /* rows = time segments, newest first, about 8px per month (the long 2020-2024 stretch is compressed so the cards stay compact):
+                      1 Nov26-now | 2 Jan26-Nov26 (10mo) | 3 Sep25-Jan26 (4) | 4 May25-Sep25 (4)
+                      5 May24-May25 (12) | 6 Aug20-May24 (45) | 7 Jun19-Aug20 (14) */
+                   grid-template-rows: minmax(200px,auto) minmax(80px,auto) minmax(100px,auto) minmax(90px,auto) minmax(155px,auto) minmax(95px,auto) minmax(200px,auto); }
+        .tl-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(99,102,241,0.3); transform: translateX(-50%); }
+        .tl-item { position: relative; padding-bottom: 16px; }
+        .tl-item .project-card { display: flex; flex-direction: column; height: 100%; margin: 0; }
+        .tl-item .project-card > :last-child { margin-top: auto; padding-top: 8px; }
+        .tl-item .job-toggle { align-self: flex-start; }
+        .tl-pill { position: absolute; left: -24px; top: 0; transform: translateX(-50%); background: #4f46e5; color: white;
+                   padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; white-space: nowrap; z-index: 5; }
+        .tl-tam  { grid-column: 2; grid-row: 1; }
+        .tl-net  { grid-column: 2; grid-row: 2 / span 3; }
+        .tl-sup  { grid-column: 2; grid-row: 5 / span 2; }
+        .tl-sys  { grid-column: 2; grid-row: 7; }
+        .tl-sans { grid-column: 1; grid-row: 1 / span 2; }
+        .tl-ms   { grid-column: 1; grid-row: 4 / span 2; align-self: start; }
+        @media (max-width: 768px) {
+            .tl-grid { display: block; }
+            .tl-line { display: none; }
+            .tl-item { margin: 0 !important; }
+            .tl-item .project-card { height: auto; }
+            .tl-pill { position: static; transform: none; display: inline-block; margin-bottom: 6px; }
+        }
+        /* job card text fills the space beside the education card and fades out; Show More opens it all */
+        .job-clip { position: relative; flex: 1 1 0; min-height: 3.4em; overflow: hidden;
+                    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent);
+                            mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent); }
+        .job-clip .job-list { position: absolute; left: 0; right: 0; top: 0; }
+        .job-clip.open { flex: none; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+        .job-clip.open .job-list { position: static; }
+        /* Skills: justify the long groups; short ones stay centered */
+        #skills span { text-align: justify; }
         /* Mobile responsive */
         @media (max-width: 768px) {
             .timeline-row { flex-direction: column !important; }
@@ -248,13 +284,13 @@
         <a href="#experience" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Experience</a>
         <a href="#portfolios" style="color:#4f46e5; text-decoration:none; font-size:0.85rem;">Portfolio</a>
     </nav>
-    <div style="text-align:center; padding:8px; background:rgba(99,102,241,0.08); border-bottom:1px solid rgba(99,102,241,0.1); font-size:0.8rem; color:#4f46e5;">📖 Currently attending <a href="https://www.sans.edu/cyber-security-programs/undergraduate-certificate" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:underline;">SANS Institute of Technology — Applied Cybersecurity Undergraduate Certificate</a></div>
+    <div style="text-align:center; padding:8px; background:rgba(99,102,241,0.08); border-bottom:1px solid rgba(99,102,241,0.1); font-size:0.8rem; color:#4f46e5;">📖 Currently attending <a href="https://www.sans.edu/cyber-security-programs/undergraduate-certificate" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:underline;">SANS Technology Institute — Applied Cybersecurity Certificate</a></div>
     <div class="floating-bg" id="floatingBg"></div>
 
     <header class="content">
         <div class="placeholder">
             <h1>Nour Aroussi</h1>
-            <p style="font-size:1.1rem; color:#4f46e5; margin-bottom:16px;">Cloud Security Engineer</p>
+            <p style="font-size:1.1rem; color:#4f46e5; margin-bottom:16px;">Cloud Technical Account Manager II</p>
             <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; font-size:0.9rem;">
                 <span style="display:inline-flex; align-items:center; gap:5px;">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
@@ -273,8 +309,8 @@
                     GitHub
                 </a>
             </div>
-            <p style="max-width:650px; margin:20px auto 0; line-height:1.7; font-size:0.9rem; color:#475569;">
-                Cloud Security Engineer specializing in AWS threat detection, security automation, and cloud-native defense — backed by a strong foundation in enterprise network security. Holds CISSP, CCNA, GSEC, GCIH, AWS Security Specialty, AWS SAP, SecurityX, PenTest+, and CySA+. Applies that knowledge hands-on through deployable security labs and working portfolios covering AWS GuardDuty automation, Terraform/CDK infrastructure, CIS compliance engines, real-time streaming systems, and container orchestration with k3s. Currently completing the SANS Applied Cybersecurity Certificate (GSEC · GCIH earned, GCIA remaining). Brings 5+ years of enterprise infrastructure and network security engineering at Amazon across hybrid cloud environments.
+            <p style="max-width:650px; margin:20px auto 0; line-height:1.7; font-size:0.9rem; color:#475569; text-align:justify;">
+                Cloud Technical Account Manager II with AWS Enterprise Support, advising small and medium business customers on secure, resilient and cost-effective architectures and driving incidents and risks to resolution. Brings 5+ years of enterprise infrastructure and network security engineering at Amazon across hybrid cloud environments, including a secure AWS site-to-site VPN and private-bastion remote access design, firewall and core network upgrades, and high-availability DHCP, DNS and NTP services. Applies that knowledge hands-on through deployable security labs and working portfolios covering AWS GuardDuty automation, Terraform/CDK infrastructure, CIS compliance engines, real-time streaming systems, and container orchestration with k3s. Currently completing the SANS Applied Cybersecurity Certificate (GFACT · GSEC · GCIH earned, GCIA remaining).
             </p>
         </div>
     </header>
@@ -285,6 +321,8 @@
     <section class="projects-section" id="skills">
         <h2>Skills</h2>
         <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:6px 20px; font-size:0.78rem; color:#475569; line-height:1.8;">
+            <span><strong style="color:#4f46e5;">Customer &amp; Cloud Advisory:</strong> Technical Account Management, Well-Architected Framework reviews, incident &amp; escalation management, operational readiness, risk management, executive communication, customer advocacy</span>
+            <span><strong style="color:#4f46e5;">AWS Services:</strong> EC2, VPC, IAM, S3, RDS &amp; DynamoDB, Lambda, CloudFront, CloudWatch, Systems Manager, CloudFormation/CDK, Site-to-Site VPN, Security Hub, GuardDuty</span>
             <span><strong style="color:#4f46e5;">Network Security:</strong> Firewalls (Cisco ASA, Palo Alto, Juniper, pfSense), IDS/IPS (Suricata, Snort), VPN, 802.1X NAC, VLAN Segmentation, Zero Trust</span>
             <span><strong style="color:#4f46e5;">Threat Detection & Response:</strong> SIEM (Splunk, Sentinel), Zeek, Wireshark, Forensics, Incident Response (GCIH)</span>
             <span><strong style="color:#4f46e5;">Cloud Security:</strong> AWS Security Specialty, GuardDuty, Security Hub, IAM, CloudTrail, Terraform, CDK, Azure</span>
@@ -307,84 +345,115 @@
     <!-- Experience & Education Timeline -->
     <section class="projects-section" id="experience">
         <h2>Experience & Education</h2>
-        <div style="max-width:900px; margin:0 auto; position:relative;">
-            <!-- Center timeline line -->
-            <div style="position:absolute; left:50%; top:0; bottom:0; width:2px; background:rgba(99,102,241,0.3); transform:translateX(-50%);"></div>
-
-            <!-- Row 1: May 2025 – Present -->
-            <div class="timeline-row" style="display:flex; align-items:flex-start; margin-bottom:24px; position:relative;">
-                <div class="project-card" style="flex:1; margin-right:24px; border-radius:12px; position:relative;">
-                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Present</div>
-                    <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Applied Cybersecurity Certificate</h3>
-                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">SANS Institute of Technology</div>
-                    <div style="font-size:0.75rem; color:#475569;">SEC401 (GSEC) · SEC504 (GCIH) · SEC503 (GCIA, in progress)</div>
-                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jan 2026</div>
-                </div>
-                <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">Present</div>
-                <div class="project-card" style="flex:1; margin-left:24px; border-radius:12px; position:relative;">
+                <div class="tl-grid">
+            <div class="tl-line"></div>
+            <div class="tl-item tl-tam">
+                <span class="tl-pill">Nov 2026 – Present</span>
+                <div class="project-card" style="border-radius:12px; ">
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Present</div>
                     <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
-                        <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Network & IT Engineer II</h3>
+                        <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Cloud Technical Account Manager II</h3>
                     </div>
-                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ring, Blink, Key & Sidewalk</div>
-                    <ul id="job1" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon Web Services – Enterprise Support, NAMER, US-SMB</div>
+                    <div class="job-clip"><ul id="jobTam" class="job-list" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0;">
+                        <li>Serve as the principal technical advisor and voice of the customer for AWS Enterprise Support customers in the North America small and medium business segment</li>
+                        <li>Provide strategic guidance on planning and building solutions with AWS best practices, and help drive adoption of services across compute, storage, databases, networking, serverless and security</li>
+                        <li>Proactively keep customer environments operationally healthy and resilient through architecture guidance and risk management</li>
+                        <li>Lead discussions with customer leadership on incidents, trade-offs, support and risk, and work with AWS engineers and service teams to see issues through to resolution</li>
+                        <li>Build close customer relationships to understand business and operational needs and help customers get the most value from AWS</li>
+                    </ul></div>
+                    <span class="job-toggle" data-target="jobTam" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Nov 2026</div>
+                </div>
+            </div>
+            <div class="tl-item tl-net">
+                <span class="tl-pill">2025 – 2026</span>
+                <div class="project-card" style="border-radius:12px; ">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Nov 2026</div>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
+                        <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Network &amp; IT Engineer II</h3>
+                    </div>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ring, Blink, Key &amp; Sidewalk</div>
+                    <div class="job-clip"><ul id="job1" class="job-list" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0;">
+                        <li>Designed and delivered private remote access for three lab teams: an isolated AWS VPC with an IPsec site-to-site VPN to the on-premises firewall and per-team bastions using corporate authentication and no public exposure, replacing a legacy public bastion</li>
+                        <li>Upgraded a production firewall cluster with no vendor support, closing known web-interface vulnerabilities with about 16 minutes of planned downtime and a tested rollback, after first recovering a node from a kernel panic</li>
+                        <li>Introduced key-only, recorded administrator access across the core, access switches, firewall and servers, with every session traceable to the person</li>
+                        <li>Repaired and documented high-availability DHCP, DNS and NTP services for about 1,500 devices, and retired a legacy vSphere cluster in favor of a lightweight thin-client service</li>
+                        <li>Diagnosed Wi-Fi DHCP failures as 2.4 GHz congestion, re-tuned the Aruba cluster and mapped all access points, and piloted eero as a replacement</li>
                         <li>Enforce network security policy across hybrid LAN/WAN/wireless infrastructure, including VLAN segmentation, ACL management, and firewall rule reviews on Cisco Meraki, Aruba, and Juniper platforms</li>
                         <li>Lead incident response for network security events: identify root cause, contain threats, and implement remediation — balancing live ticket queue with proactive hardening work</li>
                         <li>Manage and secure enterprise network lab environments running VMware ESXi/vSphere, including hybrid on-premises/cloud connectivity and network isolation between test and production segments</li>
                         <li>Maintain security-relevant operational documentation: network diagrams, access control records, change management logs, and runbooks for the Boston regional office</li>
                         <li>Troubleshoot and harden endpoints across macOS, Windows, and Linux environments — applying security-first diagnostic methodology to reduce attack surface</li>
-                    </ul>
+                    </ul></div>
                     <span class="job-toggle" data-target="job1" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2025</div>
                 </div>
             </div>
-
-            <!-- Row 2: 2020 – 2025 -->
-            <div class="timeline-row" style="display:flex; align-items:flex-start; margin-bottom:24px; position:relative;">
-                <div class="project-card" style="flex:1; margin-right:24px; border-radius:12px; position:relative;">
-                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Aug 2025</div>
-                    <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">MS Cybersecurity & Info Assurance</h3>
-                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">Western Governors University</div>
-                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2024</div>
-                </div>
-                <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">2020 – 2025</div>
-                <div class="project-card" style="flex:1; margin-left:24px; border-radius:12px; position:relative;">
+            <div class="tl-item tl-sup">
+                <span class="tl-pill">2020 – 2025</span>
+                <div class="project-card" style="border-radius:12px; ">
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">May 2025</div>
                     <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
                         <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">IT Support Engineer II</h3>
                     </div>
                     <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">Amazon – Ops Tech Solutions Delivery</div>
-                    <ul id="job2" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
+                    <div class="job-clip"><ul id="job2" class="job-list" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0;">
                         <li>Secured multi-site LAN/WAN and wireless infrastructure across Delivery Stations and Fulfillment Centers, enforcing network segmentation and access control policies in high-availability environments</li>
                         <li>Drove incident response and escalation for network and security events across a regional fleet, maintaining 99.9% SLA compliance within ITIL-aligned change management processes</li>
                         <li>Evaluated and deployed network security appliances — including firewall and NAC solutions — to improve security posture across AMZL and Robotic Delivery Stations</li>
                         <li>Managed hardware lifecycle, firmware patching, and vulnerability remediation for network equipment across multiple sites</li>
                         <li>Built and secured IT and network infrastructure for new site launches, including initial firewall configuration and network segmentation design</li>
                         <li>Coordinated 24/7 on-call security and network incident coverage, responding to critical outages and threats with rapid escalation</li>
-                    </ul>
+                    </ul></div>
                     <span class="job-toggle" data-target="job2" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Aug 2020</div>
                 </div>
             </div>
-
-            <!-- Row 3: 2019 – 2020 -->
-            <div class="timeline-row" style="display:flex; align-items:flex-start; position:relative;">
-                <div style="flex:1; margin-right:24px;"></div>
-                <div style="position:absolute; left:50%; transform:translateX(-50%); background:#4f46e5; color:white; padding:4px 10px; border-radius:12px; font-size:0.7rem; white-space:nowrap; z-index:1;">2019 – 2020</div>
-                <div class="project-card" style="flex:1; margin-left:24px; border-radius:12px; position:relative;">
+            <div class="tl-item tl-sys">
+                <span class="tl-pill">2019 – 2020</span>
+                <div class="project-card" style="border-radius:12px; ">
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Aug 2020</div>
                     <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px;">
                         <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">System Administrator</h3>
                     </div>
                     <div style="font-size:0.8rem; color:#64748b; margin:2px 0 4px;">4As · New York, NY</div>
-                    <ul id="job3" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0; max-height:0; overflow:hidden; transition:max-height 0.3s;">
+                    <div class="job-clip"><ul id="job3" class="job-list" style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:14px; margin:0;">
                         <li>Designed virtualized environment (ESXi/vCenter), improving resource utilization by 40%; built HA cluster (HP Array/Synology NAS) ensuring 99.9% uptime</li>
                         <li>Reconfigured VLANs on HP/Cisco switches using core protocols (STP, QoS), reducing latency by 30%; deployed SonicWall firewalls for VPN and security policy administration</li>
                         <li>Migrated on-premises systems to Azure/G-Suite (VPCs/VNets, VPN), cutting infrastructure costs by 35%; led Windows Server migration for 200 users via change management processes</li>
                         <li>Implemented Barracuda backup with 4-hour RTO; maintained network diagrams and documentation across all projects</li>
-                    </ul>
+                    </ul></div>
                     <span class="job-toggle" data-target="job3" style="font-size:0.7rem; color:#4f46e5; cursor:pointer;">Show More</span>
                     <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jun 2019</div>
+                </div>
+            </div>
+            <div class="tl-item tl-sans">
+                <div class="project-card" style="border-radius:12px;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Present</div>
+                    <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">Applied Cybersecurity Certificate</h3>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">SANS Technology Institute</div>
+                    <div style="font-size:0.75rem; color:#475569; margin-bottom:6px;">12 credits · 4 courses · 4 GIAC certifications · online</div>
+                    <ul style="font-size:0.75rem; color:#475569; line-height:1.6; padding-left:2px; margin:0 0 6px; list-style:none;">
+                        <li>✓ GFACT — Feb 2026</li>
+                        <li>✓ SEC401 · GSEC — Apr 2026</li>
+                        <li>✓ SEC504 · GCIH — Jun 2026</li>
+                        <li>◐ SEC503 · GCIA — in progress</li>
+                    </ul>
+                    <div style="font-size:0.72rem; color:#64748b;">Hands-on labs in network defense and incident handling. NSA-designated Center of Academic Excellence in Cyber Defense.</div>
+                    <a href="https://www.sans.edu/cyber-security-programs/undergraduate-certificate" target="_blank" rel="noopener noreferrer" style="font-size:0.7rem; color:#4f46e5; text-decoration:none; align-self:flex-start; margin-top:6px;">Program page ↗</a>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">Jan 2026</div>
+                </div>
+            </div>
+<div class="tl-item tl-ms">
+                <div class="project-card" style="border-radius:12px;">
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right;">Sep 2025</div>
+                    <h3 style="color:#4f46e5; font-size:0.9rem; margin:0;">M.S. Cybersecurity &amp; Information Assurance</h3>
+                    <div style="font-size:0.8rem; color:#64748b; margin:2px 0 8px;">Western Governors University · Graduated Sep 2025</div>
+                    <div style="font-size:0.75rem; color:#475569; margin-bottom:6px;">11 courses · competency-based · online · graduate capstone</div>
+                    <div style="font-size:0.72rem; color:#64748b; margin-bottom:6px;">Focus: cyberdefense, incident response, penetration testing, cloud security, secure network design, governance, risk and compliance. Curriculum aligned to the NICE Framework, NSA CAE guidelines and the CISSP CBK.</div>
+                    <a href="https://www.wgu.edu/online-it-degrees/cybersecurity-information-assurance-masters-program.html" target="_blank" rel="noopener noreferrer" style="font-size:0.7rem; color:#4f46e5; text-decoration:none; align-self:flex-start; margin-top:2px;">Program page ↗</a>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:right; margin-top:8px;">May 2024</div>
                 </div>
             </div>
         </div>
@@ -407,7 +476,7 @@
             <a href="https://github.com/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:none;">GitHub</a>
             <a href="https://www.credly.com/users/nouraroussi" target="_blank" rel="noopener noreferrer" style="color:#4f46e5; text-decoration:none;">Credly</a>
         </div>
-        <p>© 2026 Nour Aroussi · Cloud Security Engineer · Boston, MA</p>
+        <p>© 2026 Nour Aroussi · Cloud Technical Account Manager II · Boston, MA</p>
         <p style="margin-top:6px; font-size:0.7rem; color:#cbd5e1;">Certifications synced weekly from Credly · Built with HTML, CSS &amp; JavaScript</p>
     </footer>
 
@@ -431,13 +500,9 @@
         // Job details toggle (wired via class + data-target)
         function toggleJob(id, btn) {
             const el = document.getElementById(id);
-            if (el.style.maxHeight === '0px' || el.style.maxHeight === '') {
-                el.style.maxHeight = '300px';
-                btn.textContent = 'Show Less';
-            } else {
-                el.style.maxHeight = '0px';
-                btn.textContent = 'Show More';
-            }
+            const open = el.parentElement.classList.toggle('open');
+            el.classList.toggle('open', open);
+            btn.textContent = open ? 'Show Less' : 'Show More';
         }
         document.querySelectorAll('.job-toggle').forEach(function (span) {
             span.addEventListener('click', function () { toggleJob(this.dataset.target, this); });
@@ -496,8 +561,8 @@
             { name: "Cloud Quest: Networking", img: "https://images.credly.com/images/6bf3f80e-4cba-4b4c-bf45-85aec42233ff/blob", url: "https://www.credly.com/badges/e96555dd-658c-4b58-acc5-6d4f2685d42a/public_url", date: "2026-04-26", group: "learning" },
             { name: "Cloud Quest: Generative AI Architect", img: "https://images.credly.com/images/e3f85edd-57d4-4585-9311-7b99b3bc7a75/blob", url: "https://www.credly.com/badges/4b534260-7275-4e75-b497-4ba4ced927cd/public_url", date: "2026-04-21", group: "learning" },
             { name: "Cloud Quest: Security", img: "https://images.credly.com/images/ea344df5-1074-410e-b359-ded4ea3574a7/blob", url: "https://www.credly.com/badges/9f825acd-ff79-48f5-a476-c4b0feb6d997/public_url", date: "2026-04-07", group: "learning" },
-            { name: "Well-Architected Proficient", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url", date: "2026-03-05", group: "learning" },
             { name: "AI Business Strategist Early Adopter", img: "https://images.credly.com/images/b7716dcd-7fd1-4cb2-bcc8-23685f1bcdd8/blob", url: "https://www.credly.com/badges/bce14941-c6af-4a5f-86c0-1b3d650ac49c/public_url", date: "2026-10-04", group: "learning" },
+            { name: "Well-Architected Proficient", img: "https://images.credly.com/images/b870667f-00a3-48d7-b988-9c02b441b883/image.png", url: "https://www.credly.com/badges/b29bd03a-6a26-42d8-b763-9b9b533a352b/public_url", date: "2026-03-05", group: "learning" },
             { name: "Verified International Academic Qualifications", img: "https://images.credly.com/images/c4569922-64bd-4bb9-9eda-a37736389d26/image.png", url: "https://www.credly.com/badges/37386789-593c-479d-9640-19b8314daed7/public_url", date: "2024-01-03", group: "learning" },
         ];
 
